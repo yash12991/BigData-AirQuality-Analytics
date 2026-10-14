@@ -36,18 +36,18 @@ class NumberedCanvas(canvas.Canvas):
         
         # Header (Pages 2+)
         if self._pageNumber > 1:
-            self.drawString(36, 11 * inch - 30, "Air Quality Big Data Project (Track B) — Google Meet Recording Script")
-            self.drawRightString(8.5 * inch - 36, 11 * inch - 30, "Live Video Walkthrough")
+            self.drawString(36, 11 * inch - 28, "Air Quality Big Data Project (Track B) — Google Meet Video Recording Script")
+            self.drawRightString(8.5 * inch - 36, 11 * inch - 28, "Presentation to Sir")
             self.setStrokeColor(colors.HexColor("#CBD5E1"))
             self.setLineWidth(0.5)
-            self.line(36, 11 * inch - 34, 8.5 * inch - 36, 11 * inch - 34)
+            self.line(36, 11 * inch - 32, 8.5 * inch - 36, 11 * inch - 32)
             
         # Footer (All pages)
         self.setStrokeColor(colors.HexColor("#CBD5E1"))
         self.setLineWidth(0.5)
-        self.line(36, 38, 8.5 * inch - 36, 38)
-        self.drawString(36, 26, "Google Meet Video Recording Walkthrough & Speaking Script")
-        self.drawRightString(8.5 * inch - 36, 26, f"Page {self._pageNumber} of {total_pages}")
+        self.line(36, 36, 8.5 * inch - 36, 36)
+        self.drawString(36, 24, "Google Meet Video Recording Walkthrough & Speaking Script")
+        self.drawRightString(8.5 * inch - 36, 24, f"Page {self._pageNumber} of {total_pages}")
         self.restoreState()
 
 
@@ -57,8 +57,8 @@ def build_pdf(pdf_path: str):
         pagesize=letter,
         leftMargin=36,
         rightMargin=36,
-        topMargin=44,
-        bottomMargin=46
+        topMargin=42,
+        bottomMargin=44
     )
     
     styles = getSampleStyleSheet()
@@ -68,8 +68,9 @@ def build_pdf(pdf_path: str):
     DARK_SLATE = colors.HexColor("#1E293B")
     TERMINAL_BG = colors.HexColor("#090D16")
     TERM_TEXT = colors.HexColor("#38BDF8")
-    SPEECH_BG = colors.HexColor("#F8FAFC")
-    BORDER = colors.HexColor("#E2E8F0")
+    SPEECH_BG = colors.HexColor("#FEFCE8")
+    SPEECH_BORDER = colors.HexColor("#EAB308")
+    BORDER = colors.HexColor("#CBD5E1")
     
     title_style = ParagraphStyle(
         'DocTitle',
@@ -95,11 +96,11 @@ def build_pdf(pdf_path: str):
         'StepH1',
         parent=styles['Heading2'],
         fontName='Helvetica-Bold',
-        fontSize=11.5,
+        fontSize=11,
         leading=14,
         textColor=NAVY,
-        spaceBefore=8,
-        spaceAfter=4,
+        spaceBefore=7,
+        spaceAfter=3,
         keepWithNext=True
     )
 
@@ -143,7 +144,7 @@ def build_pdf(pdf_path: str):
 
     # Title Banner
     story.append(Paragraph("🎥 Google Meet Video Recording Script & Defense Guide", title_style))
-    story.append(Paragraph("DISTRIBUTED AIR QUALITY ANALYTICS & FORECASTING (TRACK B) &bull; NATURAL SPEAKING FLOW FOR PROFESSOR / SIR", sub_style))
+    story.append(Paragraph("DISTRIBUTED AIR QUALITY ANALYTICS & FORECASTING (TRACK B) &bull; NATURAL SPEAKING FLOW FOR SIR", sub_style))
     story.append(HRFlowable(width="100%", thickness=1.5, color=ACCENT_BLUE, spaceBefore=0, spaceAfter=6))
 
     # Recording Overview
@@ -154,7 +155,7 @@ def build_pdf(pdf_path: str):
         "explaining the exact numbers and figures displayed."
     )
     story.append(Paragraph(intro_txt, body_style))
-    story.append(Spacer(1, 6))
+    story.append(Spacer(1, 5))
 
     # Roles Table
     roles_table_data = [
@@ -172,14 +173,17 @@ def build_pdf(pdf_path: str):
         ('BOTTOMPADDING', (0,0), (-1,-1), 2.5),
     ]))
     story.append(t_roles)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     # Opening speech box
     opening_txt = (
-        "<b>Opening (30s) — Teammate A (Screen Sharer):</b><br/>"
-        "<i>\"Hello Sir. In this video, our team is presenting our Big Data project: Distributed Urban Air Quality Analytics and AQI Forecasting. "
-        "We are strictly following Track B (HDFS &rarr; Apache Spark &rarr; Spark MLlib) across Delhi NCR, Bengaluru, and Hyderabad, adhering to official "
-        "CPCB regulatory standards. We have prepared numbered commands so we can run and demonstrate each stage cleanly. Let us begin with Step 1.\"</i>"
+        "<b>Opening Speech (30s) — Teammate A (Screen Sharer):</b><br/>"
+        "<i>\"Hello Sir. In this video, our team is presenting our Big Data project: <b>Distributed Urban Air Quality Analytics and AQI Forecasting</b>. "
+        "We have built this project according to <b>Track B: Machine Learning at Scale</b>, implementing the complete distributed pipeline: "
+        "<b>Hadoop HDFS &rarr; Apache Spark distributed ETL &rarr; Spark MLlib</b>. "
+        "We are analyzing continuous sensor telemetry across three cities—<b>Delhi NCR</b>, <b>Bengaluru</b>, and <b>Hyderabad</b>—adhering strictly to India's official "
+        "<b>Central Pollution Control Board (CPCB)</b> regulatory standards. "
+        "We have prepared numbered commands so we can run and demonstrate each stage cleanly. Let us begin with Step 1.\"</i>"
     )
     t_opening = Table([[Paragraph(opening_txt, speech_style)]], colWidths=[7.5*inch])
     t_opening.setStyle(TableStyle([
@@ -187,28 +191,32 @@ def build_pdf(pdf_path: str):
         ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor("#F59E0B")),
         ('TOPPADDING', (0,0), (-1,-1), 4),
         ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 6),
+        ('RIGHTPADDING', (0,0), (-1,-1), 6),
     ]))
     story.append(t_opening)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     def make_step(step_num, title, speaker, command_run, terminal_output, what_to_say, image_callout=None):
         card = []
         card.append(Paragraph(f"<b>Step {step_num}: {title}</b> — <font color='{ACCENT_BLUE}'>{speaker}</font>", h1_style))
         
-        # Command Bar
-        cmd_text = f"<b>Terminal Action:</b> Driver types <code>{command_run}</code> and hits Enter."
+        # Command Bar (Prominent)
+        cmd_text = f"<b>Terminal Action:</b> Driver runs <b><code>{command_run}</code></b> in terminal."
         if image_callout:
             cmd_text += f"<br/><b>Generated Visual Output:</b> {image_callout}"
             
         t_cmd = Table([[Paragraph(cmd_text, driver_style)]], colWidths=[7.5*inch])
         t_cmd.setStyle(TableStyle([
             ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#E0F2FE")),
-            ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor("#38BDF8")),
+            ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor("#0284C7")),
             ('TOPPADDING', (0,0), (-1,-1), 3),
             ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+            ('LEFTPADDING', (0,0), (-1,-1), 6),
+            ('RIGHTPADDING', (0,0), (-1,-1), 6),
         ]))
         card.append(t_cmd)
-        card.append(Spacer(1, 4))
+        card.append(Spacer(1, 3))
 
         # Two-column box: Left = Output on Screen, Right = What Speaker Says
         t_code = Paragraph(terminal_output.replace("\n", "<br/>").replace(" ", "&nbsp;"), terminal_code)
@@ -235,7 +243,7 @@ def build_pdf(pdf_path: str):
             ('RIGHTPADDING', (0,0), (-1,-1), 5),
         ]))
         card.append(t_box)
-        card.append(Spacer(1, 8))
+        card.append(Spacer(1, 6))
         story.append(KeepTogether(card))
 
     # Step 1
@@ -245,7 +253,7 @@ def build_pdf(pdf_path: str):
         speaker="Teammate A (Driver / Storage Lead)",
         command_run="./1_hdfs_show_raw.sh",
         terminal_output="$ hdfs dfs -ls -h /air_quality/raw/\nFound 1 items\n-rw-r--r--  1 yash supergroup  47.3 M\n  /air_quality/raw/\n  raw_hourly_measurements.jsonl",
-        what_to_say="Sir, as you can see on the screen, our command just listed our raw telemetry staged inside Hadoop HDFS under /air_quality/raw/. You can see this file is 47.3 Megabytes and contains 96,000 raw continuous hourly records collected from OpenAQ API for Delhi, Bengaluru, and Hyderabad. We built a resumable client that respects API rate limits. Staging it in HDFS allows Hadoop to distribute the data with a 128 MB block size and 3x replication factor. Now let us look at Step 2 to see the processed lake."
+        what_to_say="Sir, as you can see on the screen, our command just listed our raw telemetry staged inside Hadoop HDFS under the path /air_quality/raw/. You can see this file: raw_hourly_measurements.jsonl. It is 47.3 Megabytes and contains 96,000 raw continuous hourly records collected from the OpenAQ API. We built a resumable client that respects OpenAQ's 60 requests-per-minute rate limit. Staging it in HDFS allows Hadoop to distribute the data with a 128 MB block size and 3x replication factor. Now, let us look at Step 2 to see how we store the processed data."
     )
 
     # Step 2
@@ -255,7 +263,7 @@ def build_pdf(pdf_path: str):
         speaker="Teammate A (Driver / Storage Lead)",
         command_run="./2_hdfs_show_parquet.sh",
         terminal_output="$ hdfs dfs -ls -h .../hourly_aqi_parquet/\nFound 4 items\n_SUCCESS\ncity=Bengaluru\ncity=Delhi NCR\ncity=Hyderabad",
-        what_to_say="Sir, in Step 2, this is our processed data lake in HDFS. Notice that instead of plain CSV files, we are using columnar Apache Parquet with Snappy compression, partitioned by city—Bengaluru, Delhi NCR, and Hyderabad. This enables Partition Pruning: when our downstream Spark queries ask for Delhi data, Spark reads only the Delhi directory and completely skips the other cities, saving disk I/O. Now my teammate will run Step 3 for our Spark ETL."
+        what_to_say="Sir, in Step 2, this is our processed data lake in HDFS. Notice that instead of plain CSV files, we are using columnar Apache Parquet with Snappy compression, partitioned by city—Bengaluru, Delhi NCR, and Hyderabad. This enables Partition Pruning: when our downstream Spark queries ask for Delhi data, Spark reads only the Delhi directory and completely skips the other cities, saving disk I/O and network shuffle. Now my teammate will explain Step 3 and run our distributed Spark ETL."
     )
 
     # Step 3
@@ -285,7 +293,7 @@ def build_pdf(pdf_path: str):
         speaker="Teammate C (Spark MLlib Machine Learning Lead)",
         command_run="./5_spark_mllib_forecasting.sh",
         terminal_output="$ python3 scripts/train_forecasting_models.py\n[2/5] Chronological Split (80% Train, 20% Test)\n[3/5] Naive Persistence Baseline -> RMSE: 42.16\n[5/5] Training MLlib Distributed Models:\n  - Linear Regression: RMSE 37.86 (+10.2%)\n  - Random Forest:     RMSE 35.17 (+16.6%)\n  - GBT Regressor:     RMSE 37.61 (+10.8%)\nBest Model: Random Forest Regressor (RMSE 35.17)\nSaved: [CMD 5 - FIG 1] cmd5_fig1_model_forecast...",
-        what_to_say="Sir, now we move to distributed Machine Learning using Spark MLlib to forecast PM2.5 levels 24 hours in advance. In Step 2, we used a strict chronological 80/20 block split—the model trains strictly on the past and tests on the future so there is zero data leakage. In Step 3, our Persistence Baseline gave an RMSE of 42.16. Then Spark trained three models. Our champion model is Random Forest with an RMSE of 35.17—a 16.6% improvement over baseline in just 1.79s of training. It saved Figure CMD 5-1, where you can see the orange predicted curve closely tracking the actual observed values. Next is Step 6."
+        what_to_say="Sir, now we move to distributed Machine Learning using Spark MLlib to forecast PM2.5 levels 24 hours in advance. In Step 2, we used a strict chronological 80/20 block split—the model trains strictly on the past and tests on the future so there is zero data leakage. In Step 3, our Persistence Baseline gave an RMSE of 42.16. Then Spark trained three models. Our champion model is Random Forest with an RMSE of 35.17—a 16.6% improvement over the baseline in just 1.79s of training. It saved Figure CMD 5-1, where you can see the orange predicted curve closely tracking the actual observed values. Next is Step 6."
     )
 
     # Step 6
@@ -302,13 +310,13 @@ def build_pdf(pdf_path: str):
     wrap_block = []
     wrap_block.append(Paragraph("<b>Step 7: Master Automated Pipeline & Closing (1 Minute)</b>", h1_style))
     wrap_txt = (
-        "<b>Terminal Action:</b> Driver mentions or runs <code>./7_run_entire_pipeline.sh</code>.<br/>"
+        "<b>Terminal Action:</b> Driver runs <b><code>./7_run_entire_pipeline.sh</code></b> (or points to it).<br/>"
         "<b>What Teammate A Says to Conclude the Video:</b><br/>"
-        "<i>\"And Sir, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have <code>./7_run_entire_pipeline.sh</code>, which executes everything in one automated run.<br/><br/>"
+        "<i>\"And Sir, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have <b><code>./7_run_entire_pipeline.sh</code></b>, which executes everything in one automated run.<br/><br/>"
         "To summarize our project:<br/>"
-        "1. We built a full Track B distributed architecture on HDFS, Apache Spark, and Spark MLlib.<br/>"
-        "2. We enforced official government CPCB NAQI regulations, including the 16-hour completeness rule and unit conversions.<br/>"
-        "3. We proved machine learning at scale with a 16.6% improvement in 24h forecasting and 70.2% hazard classification accuracy.<br/><br/>"
+        "1. We built a full <b>Track B</b> distributed architecture on <b>HDFS, Apache Spark, and Spark MLlib</b>.<br/>"
+        "2. We enforced official government <b>CPCB NAQI regulations</b>, including the 16-hour completeness rule and unit conversions.<br/>"
+        "3. We proved machine learning at scale with a <b>16.6% improvement in 24h forecasting</b> and <b>70.2% hazard classification accuracy</b>.<br/><br/>"
         "Thank you, Sir!\"</i>"
     )
     t_wrap = Table([[Paragraph(wrap_txt, speech_style)]], colWidths=[7.5*inch])
@@ -317,9 +325,11 @@ def build_pdf(pdf_path: str):
         ('BOX', (0,0), (-1,-1), 0.5, colors.HexColor("#94A3B8")),
         ('TOPPADDING', (0,0), (-1,-1), 4),
         ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 6),
+        ('RIGHTPADDING', (0,0), (-1,-1), 6),
     ]))
     wrap_block.append(t_wrap)
-    wrap_block.append(Spacer(1, 8))
+    wrap_block.append(Spacer(1, 6))
     story.append(KeepTogether(wrap_block))
 
     # Image Reference Table
