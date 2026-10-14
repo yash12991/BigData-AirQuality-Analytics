@@ -32,7 +32,7 @@ html_content = f"""<!DOCTYPE html>
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1e293b;
     line-height: 1.45;
-    font-size: 9.5pt;
+    font-size: 9pt;
     margin: 0;
     padding: 0;
     background: #f8fafc;
@@ -58,7 +58,7 @@ html_content = f"""<!DOCTYPE html>
   }}
   .header-banner p {{
     margin: 2px 0 0 0;
-    font-size: 8.5pt;
+    font-size: 8pt;
     color: #cbd5e1;
   }}
   .meta-tag {{
@@ -81,40 +81,43 @@ html_content = f"""<!DOCTYPE html>
     background: #ffffff;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    padding: 8px 12px;
+    padding: 6px 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }}
   .role-card strong {{
     color: #0369a1;
     display: block;
-    font-size: 9pt;
+    font-size: 8.5pt;
     margin-bottom: 2px;
   }}
   .role-card span {{
-    font-size: 8pt;
+    font-size: 7.5pt;
     color: #64748b;
   }}
 
-  /* Two Column Step Card */
-  .step-container {{
+  /* Two Column Container */
+  .two-col-card {{
     background: #ffffff;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     overflow: hidden;
     page-break-inside: avoid;
+    display: grid;
+    grid-template-columns: 50% 50%;
   }}
-  .step-header {{
+  .card-header-full {{
+    grid-column: span 2;
     background: #f1f5f9;
     border-bottom: 1px solid #cbd5e1;
-    padding: 8px 14px;
+    padding: 6px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }}
   .step-title {{
-    font-size: 11pt;
+    font-size: 10.5pt;
     font-weight: 700;
     color: #0f172a;
     display: flex;
@@ -127,48 +130,45 @@ html_content = f"""<!DOCTYPE html>
     border: 1px solid #bae6fd;
     padding: 2px 8px;
     border-radius: 12px;
-    font-size: 8pt;
+    font-size: 7.5pt;
     font-weight: 600;
   }}
-  .two-columns {{
-    display: grid;
-    grid-template-columns: 48% 52%;
-  }}
-  .col-left {{
+
+  .col-left-term {{
     background: #0f172a;
     color: #e2e8f0;
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-right: 1px solid #cbd5e1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }}
-  .col-right {{
+  .col-right-speech {{
     background: #ffffff;
-    padding: 12px 14px;
+    padding: 10px 14px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 6px;
   }}
 
-  /* Left Side: Technical & Screen */
+  /* Left Side: Terminal Box */
   .box-label-left {{
-    font-size: 7.5pt;
+    font-size: 7pt;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.5px;
     color: #94a3b8;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }}
   .cmd-prompt {{
     background: #1e293b;
     border: 1px solid #334155;
-    padding: 6px 10px;
+    padding: 5px 8px;
     border-radius: 5px;
     color: #f8fafc;
     font-family: "SFMono-Regular", Consolas, Menlo, monospace;
-    font-size: 8.5pt;
+    font-size: 8pt;
     font-weight: 600;
   }}
   .cmd-prompt span {{
@@ -187,26 +187,37 @@ html_content = f"""<!DOCTYPE html>
     white-space: pre-wrap;
     word-break: break-all;
   }}
-  .embedded-img {{
-    width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    border: 1px solid #334155;
-    border-radius: 5px;
-    background: #ffffff;
-    margin-top: 4px;
+
+  /* Left Side: Image Box */
+  .col-left-fig {{
+    background: #f8fafc;
+    padding: 10px 12px;
+    border-right: 1px solid #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }}
-  .img-caption {{
-    font-size: 7pt;
-    color: #94a3b8;
+  .fig-preview {{
+    width: 100%;
+    max-height: 230px;
+    object-fit: contain;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }}
+  .fig-caption-tag {{
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 4px;
     text-align: center;
-    margin-top: 2px;
-    font-style: italic;
   }}
 
-  /* Right Side: Natural Speech Script */
+  /* Right Side: Speech Card */
   .box-label-right {{
-    font-size: 7.5pt;
+    font-size: 7pt;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -216,11 +227,11 @@ html_content = f"""<!DOCTYPE html>
   .speech-card {{
     background: #fefce8;
     border-left: 4px solid #f59e0b;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border-radius: 4px;
     color: #0f172a;
     font-size: 8.5pt;
-    line-height: 1.45;
+    line-height: 1.4;
   }}
   .speech-card strong {{
     color: #b45309;
@@ -228,26 +239,30 @@ html_content = f"""<!DOCTYPE html>
   .highlight-box {{
     background: #f1f5f9;
     border: 1px solid #e2e8f0;
-    padding: 8px 10px;
+    padding: 6px 8px;
     border-radius: 4px;
-    font-size: 8pt;
+    font-size: 7.5pt;
     color: #334155;
   }}
   .highlight-box ul {{
-    margin: 3px 0 0 0;
-    padding-left: 16px;
+    margin: 2px 0 0 0;
+    padding-left: 14px;
   }}
-  .highlight-box li {{
-    margin-bottom: 2px;
-  }}
-  .figure-speak {{
+  .figure-speak-box {{
     background: #f0fdf4;
-    border-left: 3px solid #22c55e;
-    padding: 8px 10px;
+    border-left: 4px solid #22c55e;
+    padding: 10px 12px;
     border-radius: 4px;
-    font-size: 8pt;
     color: #14532d;
-    margin-top: 4px;
+    font-size: 8.5pt;
+    line-height: 1.45;
+  }}
+  .figure-speak-box strong {{
+    color: #166534;
+    display: block;
+    font-size: 8pt;
+    margin-bottom: 4px;
+    text-transform: uppercase;
   }}
 </style>
 </head>
@@ -256,8 +271,8 @@ html_content = f"""<!DOCTYPE html>
   <!-- Header Banner -->
   <div class="header-banner">
     <div>
-      <h1>🎥 Google Meet Video Recording Script (Side-by-Side Presentation Guide)</h1>
-      <p>DISTRIBUTED URBAN AIR QUALITY ANALYTICS & FORECASTING (TRACK B) &bull; NATURAL SPEAKING FLOW FOR SIR</p>
+      <h1>🎥 Google Meet Video Recording Script (Side-by-Side Visual & Speaking Guide)</h1>
+      <p>DISTRIBUTED URBAN AIR QUALITY ANALYTICS & FORECASTING (TRACK B) &bull; PRESENTATION WALKTHROUGH FOR SIR</p>
     </div>
     <div class="meta-tag">Track B &bull; HDFS &rarr; Spark &rarr; Spark MLlib</div>
   </div>
@@ -266,22 +281,22 @@ html_content = f"""<!DOCTYPE html>
   <div class="roles-bar">
     <div class="role-card">
       <strong>Teammate A (Driver / Storage Lead)</strong>
-      <span>Shares screen, runs commands, presents Steps 1 & 2 (HDFS Data Lake) & Conclusion</span>
+      <span>Shares screen, runs commands, presents Steps 1 & 2 (HDFS Data Lake) & Step 7 Conclusion</span>
     </div>
     <div class="role-card">
       <strong>Teammate B (Spark ETL & Analytics Lead)</strong>
-      <span>Presents Steps 3 & 4 (Distributed Spark ETL, CPCB 16h validity & Diurnal Analytics)</span>
+      <span>Presents Steps 3 & 4 (Distributed Spark ETL, CPCB 16h validity & 3 Diurnal/AQI Charts)</span>
     </div>
     <div class="role-card">
       <strong>Teammate C (Spark MLlib ML Lead)</strong>
-      <span>Presents Steps 5 & 6 (Chronological 24h Forecasting +16.6% & Hazard Classification)</span>
+      <span>Presents Steps 5 & 6 (Chronological 24h Forecasting +16.6% & 6-Tier Hazard Confusion Matrix)</span>
     </div>
   </div>
 
   <!-- Opening Box -->
-  <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:8px 12px; margin-bottom:12px; border-left:4px solid #0284c7;">
-    <div style="font-size:8pt; font-weight:700; color:#0369a1; text-transform:uppercase; margin-bottom:2px;">Video Introduction (30 Seconds) &bull; Teammate A (Screen Sharer)</div>
-    <div style="font-size:8.5pt; color:#0f172a; line-height:1.45;">
+  <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:6px; padding:6px 10px; margin-bottom:10px; border-left:4px solid #0284c7;">
+    <div style="font-size:7.5pt; font-weight:700; color:#0369a1; text-transform:uppercase; margin-bottom:1px;">Video Introduction (30 Seconds) &bull; Teammate A (Screen Sharer)</div>
+    <div style="font-size:8pt; color:#0f172a; line-height:1.4;">
       <em>"Hello Sir. In this video, our team is presenting our Big Data project: <strong>Distributed Urban Air Quality Analytics and AQI Forecasting</strong>. 
       We have built this project according to <strong>Track B: Machine Learning at Scale</strong>, implementing the complete distributed lifecycle: 
       <strong>Hadoop HDFS &rarr; Apache Spark distributed ETL &rarr; Spark MLlib</strong> across Delhi NCR, Bengaluru, and Hyderabad adhering strictly to Indian 
@@ -290,39 +305,37 @@ html_content = f"""<!DOCTYPE html>
   </div>
 
   <!-- STEP 1 -->
-  <div class="step-container">
-    <div class="step-header">
+  <div class="two-col-card">
+    <div class="card-header-full">
       <div class="step-title">🎬 Step 1: Inspecting Raw Telemetry in Hadoop HDFS</div>
       <div class="step-badge">Speaker: Teammate A (Driver / Storage Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./1_hdfs_show_raw.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ hdfs dfs -ls -h /air_quality/raw/
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./1_hdfs_show_raw.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ hdfs dfs -ls -h /air_quality/raw/
 Found 1 items
 -rw-r--r--   1 yashsonawane supergroup     47.3 M 2026-10-14 23:13 /air_quality/raw/raw_hourly_measurements.jsonl</pre>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          "Sir, as you can see on the screen, our command just listed our raw telemetry staged inside Hadoop HDFS under the path <code>/air_quality/raw/</code>.<br/><br/>
-          You can see this file: <strong>raw_hourly_measurements.jsonl</strong>. It is <strong>47.3 Megabytes</strong> and contains <strong>96,000 raw continuous hourly records</strong> collected from the OpenAQ API across Delhi, Bengaluru, and Hyderabad.<br/><br/>
-          We built a resumable client that respects OpenAQ's 60 req/min rate limit. Staging it in HDFS allows Hadoop to distribute the data with a 128 MB block size and 3x replication factor.<br/><br/>
-          Now, let us look at Step 2 to see how we store the processed data."
-        </div>
-        <div class="highlight-box">
-          <strong>Key Highlights to Point at:</strong>
-          <ul>
-            <li>Point to <strong>47.3 M</strong>: Real continuous telemetry (96k rows), not dummy small data.</li>
-            <li>Point to <strong>/air_quality/raw/</strong>: Demonstrates proper HDFS distributed file zoning.</li>
-          </ul>
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        "Sir, as you can see on the screen, our command just listed our raw telemetry staged inside Hadoop HDFS under the path <code>/air_quality/raw/</code>.<br/><br/>
+        You can see this file: <strong>raw_hourly_measurements.jsonl</strong>. It is <strong>47.3 Megabytes</strong> and contains <strong>96,000 raw continuous hourly records</strong> collected from the OpenAQ API across Delhi, Bengaluru, and Hyderabad.<br/><br/>
+        We built a resumable client that respects OpenAQ's 60 req/min rate limit. Staging it in HDFS allows Hadoop to distribute the data with a 128 MB block size and 3x replication factor.<br/><br/>
+        Now, let us look at Step 2 to see how we store the processed data."
+      </div>
+      <div class="highlight-box">
+        <strong>Key Highlights to Point at:</strong>
+        <ul>
+          <li>Point to <strong>47.3 M</strong>: Real continuous telemetry (96k rows), not dummy small data.</li>
+          <li>Point to <strong>/air_quality/raw/</strong>: Demonstrates proper HDFS distributed file zoning.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -330,61 +343,58 @@ Found 1 items
   <div class="page-break"></div>
 
   <!-- STEP 2 -->
-  <div class="step-container">
-    <div class="step-header">
+  <div class="two-col-card">
+    <div class="card-header-full">
       <div class="step-title">🎬 Step 2: Inspecting Partitioned Parquet Lake in HDFS</div>
       <div class="step-badge">Speaker: Teammate A (Driver / Storage Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./2_hdfs_show_parquet.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ hdfs dfs -ls -h /air_quality/processed/hourly_aqi_parquet/
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./2_hdfs_show_parquet.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ hdfs dfs -ls -h /air_quality/processed/hourly_aqi_parquet/
 Found 4 items
 -rw-r--r--   1 yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/processed/hourly_aqi_parquet/_SUCCESS
 drwxr-xr-x   - yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/processed/hourly_aqi_parquet/city=Bengaluru
 drwxr-xr-x   - yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/processed/hourly_aqi_parquet/city=Delhi NCR
 drwxr-xr-x   - yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/processed/hourly_aqi_parquet/city=Hyderabad</pre>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          "Sir, in Step 2, this is our processed data lake in HDFS.<br/><br/>
-          Notice that instead of plain CSV files, we are using <strong>columnar Apache Parquet with Snappy compression</strong>, partitioned by city—<code>city=Bengaluru</code>, <code>city=Delhi NCR</code>, and <code>city=Hyderabad</code>.<br/><br/>
-          This is crucial for performance because it enables <strong>Partition Pruning</strong>. When our downstream Spark queries ask for Delhi data, Spark reads only the Delhi directory and completely skips the other cities, saving disk I/O and network shuffle.<br/><br/>
-          Now, my teammate will explain Step 3 and run our distributed Spark ETL."
-        </div>
-        <div class="highlight-box">
-          <strong>Key Highlights to Point at:</strong>
-          <ul>
-            <li>Point to <strong>_SUCCESS</strong>: Hadoop output committer validation mark.</li>
-            <li>Point to <strong>city=XXX folders</strong>: Automatic Hive-style partitioning for fast parallel scans.</li>
-          </ul>
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        "Sir, in Step 2, this is our processed data lake in HDFS.<br/><br/>
+        Notice that instead of plain CSV files, we are using <strong>columnar Apache Parquet with Snappy compression</strong>, partitioned by city—<code>city=Bengaluru</code>, <code>city=Delhi NCR</code>, and <code>city=Hyderabad</code>.<br/><br/>
+        This is crucial for performance because it enables <strong>Partition Pruning</strong>. When our downstream Spark queries ask for Delhi data, Spark reads only the Delhi directory and completely skips the other cities, saving disk I/O and network shuffle.<br/><br/>
+        Now, my teammate will explain Step 3 and run our distributed Spark ETL."
+      </div>
+      <div class="highlight-box">
+        <strong>Key Highlights to Point at:</strong>
+        <ul>
+          <li>Point to <strong>_SUCCESS</strong>: Hadoop output committer validation mark.</li>
+          <li>Point to <strong>city=XXX folders</strong>: Automatic Hive-style partitioning for fast parallel scans.</li>
+        </ul>
       </div>
     </div>
   </div>
 
   <!-- STEP 3 -->
-  <div class="step-container">
-    <div class="step-header">
+  <div class="two-col-card">
+    <div class="card-header-full">
       <div class="step-title">🎬 Step 3: Running Distributed Apache Spark ETL & CPCB Math</div>
       <div class="step-badge">Speaker: Teammate B (Spark ETL & Analytics Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./3_spark_run_etl.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ python3 scripts/spark_etl.py
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./3_spark_run_etl.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ python3 scripts/spark_etl.py
 ================ STARTING DISTRIBUTED SPARK ETL ================
 Apache Spark Version: 4.2.0
 [1/6] Ingesting raw dataset from: hdfs://localhost:9000/air_quality/raw/...
@@ -402,42 +412,40 @@ Apache Spark Version: 4.2.0
 |Delhi NCR|R K Puram, Delhi - DPCC|2016-02-06 12:30:00|193.42857142857142|500.0   |Severe         |
 +---------+-----------------------+-------------------+------------------+--------+---------------+
 Spark ETL Pipeline completed successfully in 20.71 seconds.</pre>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          <em>(While running):</em> "Sir, the driver just started our Apache Spark ETL script. Spark 4.2.0 is loading the 96,000 raw records from HDFS into an in-memory DataFrame."<br/><br/>
-          <em>(When output finishes):</em> "As you can see, the pipeline completed in 20 seconds. Here is what happened:
-          <ol style="margin:4px 0; padding-left:18px;">
-            <li>In Step 3, we converted gases like NO2 and SO2 from parts-per-billion into &mu;g/m&sup3; using their molecular weights.</li>
-            <li>In Step 4, Spark pivoted individual pollutant streams into <strong>18,521 station-hour records</strong>.</li>
-            <li>In Step 5, we applied the official Indian <strong>CPCB 16-hour completeness rule</strong>: a 24-hour moving window is only valid if at least 16 hourly readings exist. Exactly <strong>12,792 records</strong> met this strict rule.</li>
-            <li>In the sample table, you can see calculated 24h PM2.5, PM10, and final AQI—R K Puram shows an AQI of 500, which falls into the <strong>Severe</strong> category.</li>
-          </ol>
-          Now let us run Step 4 to see our distributed Spark SQL analytics and generated charts."
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        <em>(While running):</em> "Sir, the driver just started our Apache Spark ETL script. Spark 4.2.0 is loading the 96,000 raw records from HDFS into an in-memory DataFrame."<br/><br/>
+        <em>(When output finishes):</em> "As you can see, the pipeline completed in 20 seconds. Here is what happened:
+        <ol style="margin:2px 0; padding-left:16px;">
+          <li>In Step 3, we converted gases like NO2 and SO2 from parts-per-billion into &mu;g/m&sup3; using their molecular weights.</li>
+          <li>In Step 4, Spark pivoted individual pollutant streams into <strong>18,521 station-hour records</strong>.</li>
+          <li>In Step 5, we applied the official Indian <strong>CPCB 16-hour completeness rule</strong>: a 24-hour moving window is only valid if at least 16 hourly readings exist. Exactly <strong>12,792 records</strong> met this strict rule.</li>
+          <li>In the sample table, you can see calculated 24h PM2.5, PM10, and final AQI—R K Puram shows an AQI of 500, which falls into the <strong>Severe</strong> category.</li>
+        </ol>
+        Now let us run Step 4 to see our distributed Spark SQL analytics and generated charts."
       </div>
     </div>
   </div>
 
   <div class="page-break"></div>
 
-  <!-- STEP 4A: Analytics Tables -->
-  <div class="step-container">
-    <div class="step-header">
-      <div class="step-title">🎬 Step 4: Distributed Spark SQL Analytics & Descriptive Stats</div>
+  <!-- STEP 4: Terminal Analytics Table Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🎬 Step 4: Distributed Spark SQL Analytics & Summary Tables</div>
       <div class="step-badge">Speaker: Teammate B (Spark ETL & Analytics Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./4_spark_run_analytics.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ python3 scripts/run_analytics.py
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./4_spark_run_analytics.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ python3 scripts/run_analytics.py
 ================ RUNNING DISTRIBUTED ANALYTICS ================
 [1/4] Calculating city-wise descriptive statistics...
      city  total_hours  valid_aqi_hours  avg_pm25  std_pm25  avg_pm10  avg_cpcb_aqi  max_cpcb_aqi
@@ -455,84 +463,108 @@ Hyderabad    Satisfactory            1440        41.3
   [COMMAND 4 - FIGURE 1] Saved: reports/figures/cmd4_fig1_diurnal_pm25_trends.png
   [COMMAND 4 - FIGURE 2] Saved: reports/figures/cmd4_fig2_cpcb_category_distribution.png
   [COMMAND 4 - FIGURE 3] Saved: reports/figures/cmd4_fig3_city_aqi_boxplots.png</pre>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          "Sir, our Spark SQL aggregation is now displayed on screen:<br/><br/>
-          * <strong>Table 1:</strong> Notice the huge difference between cities. Delhi's average PM2.5 is <strong>121.9 &mu;g/m&sup3;</strong>, whereas Bengaluru is only <strong>28.8</strong> and Hyderabad is <strong>28.0</strong>. Delhi is more than four times more polluted.<br/><br/>
-          * <strong>Table 2:</strong> In Delhi, a massive <strong>62.5% of all monitored hours fell into the Severe category</strong>. Meanwhile, Bengaluru has 36.6% Satisfactory hours and Hyderabad has 41.3%.<br/><br/>
-          * <strong>Generated Figures:</strong> Below the tables, Spark generated three labeled figures for Command 4:
-          <ul>
-            <li><strong>Figure CMD 4-1:</strong> Shows the diurnal pollution cycle. Delhi has a severe morning peak at 08:00 AM due to winter thermal inversion trapping smoke, and an evening peak at 08:00 PM from traffic.</li>
-            <li><strong>Figure CMD 4-2:</strong> Shows the category bar distribution comparing Delhi, Bengaluru, and Hyderabad.</li>
-            <li><strong>Figure CMD 4-3:</strong> Shows the statistical AQI boxplots across the three cities.</li>
-          </ul>
-          Now let us look at the actual charts generated on the next page."
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        "Sir, our Spark SQL aggregation is now displayed on screen:<br/><br/>
+        * <strong>Table 1:</strong> Notice the huge difference between cities. Delhi's average PM2.5 is <strong>121.9 &mu;g/m&sup3;</strong>, whereas Bengaluru is only <strong>28.8</strong> and Hyderabad is <strong>28.0</strong>. Delhi is more than four times more polluted.<br/><br/>
+        * <strong>Table 2:</strong> In Delhi, a massive <strong>62.5% of all monitored hours fell into the Severe category</strong>. Meanwhile, Bengaluru has 36.6% Satisfactory hours and Hyderabad has 41.3%.<br/><br/>
+        * <strong>Generated Figures:</strong> Below the tables, Spark generated three labeled figures for Command 4. Let us now look at each generated chart side-by-side with its explanation."
+      </div>
+      <div class="highlight-box">
+        <strong>Key Highlights to Point at:</strong>
+        <ul>
+          <li>Point to <strong>Delhi avg_pm25 (121.9)</strong> vs <strong>Bengaluru (28.8)</strong>.</li>
+          <li>Point to <strong>Delhi Severe % (62.5%)</strong> proving severe winter pollution crisis.</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- STEP 4B: Analytics Visuals -->
-  <div class="step-container">
-    <div class="step-header">
-      <div class="step-title">🖼️ Step 4 Visuals: Diurnal Cycle & Health Category Distributions</div>
-      <div class="step-badge">Visual Reference: Command 4 Charts</div>
+  <!-- STEP 4: Figure 1 Side-by-Side Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🖼️ Step 4 - Figure 1: Diurnal Pattern of PM2.5 Concentration across Metros</div>
+      <div class="step-badge">Visual Reference: cmd4_fig1_diurnal_pm25_trends.png</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">CMD 4 - Figure 1: Diurnal Cycle (Inversion at 08:00 AM)</div>
-          <img class="embedded-img" src="{img_cmd4_1}" alt="Diurnal Trends"/>
-        </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-          <div>
-            <div class="box-label-left">Figure 2: CPCB Categories</div>
-            <img class="embedded-img" src="{img_cmd4_2}" alt="Categories"/>
-          </div>
-          <div>
-            <div class="box-label-left">Figure 3: AQI Boxplots</div>
-            <img class="embedded-img" src="{img_cmd4_3}" alt="Boxplots"/>
-          </div>
-        </div>
-      </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say While Displaying These Charts</div>
-        <div class="figure-speak">
-          <strong>Figure CMD 4-1 (Diurnal Cycle):</strong><br/>
-          <em>"Sir, look at this spike in Delhi at 8:00 AM due to winter thermal inversion trapping pollutants near the ground, followed by the evening rush-hour peak at 8:00 PM."</em>
-        </div>
-        <div class="figure-speak">
-          <strong>Figure CMD 4-2 (Hazard Distribution):</strong><br/>
-          <em>"Notice the tall dark red bar for Delhi showing 62.5% Severe hours, while Bengaluru is mostly green and orange (Satisfactory and Moderate)."</em>
-        </div>
-        <div class="figure-speak">
-          <strong>Figure CMD 4-3 (AQI Boxplots):</strong><br/>
-          <em>"This boxplot shows the median AQI in Delhi is right near the 400 Severe threshold, whereas Bengaluru and Hyderabad stay much lower."</em>
-        </div>
+    <div class="col-left-fig">
+      <img class="fig-preview" src="{img_cmd4_1}" alt="Diurnal Trends Chart"/>
+      <div class="fig-caption-tag">Figure CMD 4-1: Diurnal Cycle of PM2.5 across 24 Hours (IST)</div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir While Showing Figure 1</div>
+      <div class="figure-speak-box">
+        <strong>Exact Sentence to Say to Sir:</strong>
+        "Sir, as you can see in this diurnal chart for Figure CMD 4-1:<br/><br/>
+        Notice the massive pollution spike in Delhi at <strong>08:00 AM</strong>, where PM2.5 exceeds 160 &mu;g/m&sup3;. This morning peak is caused by nocturnal thermal inversion trapping industrial and vehicular smoke near ground level.<br/><br/>
+        As the sun warms the boundary layer during mid-day, the smoke disperses, but rises again to a second peak at <strong>08:00 PM</strong> due to evening rush-hour traffic.<br/><br/>
+        In contrast, Bengaluru and Hyderabad (the green and blue lines) remain remarkably flat and clean below 40 &mu;g/m&sup3; throughout the day."
       </div>
     </div>
   </div>
 
   <div class="page-break"></div>
 
-  <!-- STEP 5 -->
-  <div class="step-container">
-    <div class="step-header">
-      <div class="step-title">🎬 Step 5: Spark MLlib 24-Hour Forecasting Models</div>
+  <!-- STEP 4: Figure 2 Side-by-Side Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🖼️ Step 4 - Figure 2: CPCB Health Hazard Categories Distribution</div>
+      <div class="step-badge">Visual Reference: cmd4_fig2_cpcb_category_distribution.png</div>
+    </div>
+    <div class="col-left-fig">
+      <img class="fig-preview" src="{img_cmd4_2}" alt="CPCB Category Distribution"/>
+      <div class="fig-caption-tag">Figure CMD 4-2: Distribution of CPCB Categories by City (%)</div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir While Showing Figure 2</div>
+      <div class="figure-speak-box">
+        <strong>Exact Sentence to Say to Sir:</strong>
+        "Sir, looking at Figure CMD 4-2, this bar chart directly compares the health hazard profile across the three cities:<br/><br/>
+        Notice the prominent dark red bar for Delhi, which shows that <strong>62.5% of all recorded hours fall into the Severe category</strong> (AQI above 400).<br/><br/>
+        Meanwhile, for Bengaluru and Hyderabad, the bars are dominated by green and yellow (Satisfactory and Moderate), proving that Southern metropolitan areas enjoy far better ambient ventilation than the landlocked northern plains."
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4: Figure 3 Side-by-Side Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🖼️ Step 4 - Figure 3: City AQI Boxplots Distribution Spread</div>
+      <div class="step-badge">Visual Reference: cmd4_fig3_city_aqi_boxplots.png</div>
+    </div>
+    <div class="col-left-fig">
+      <img class="fig-preview" src="{img_cmd4_3}" alt="AQI Boxplots"/>
+      <div class="fig-caption-tag">Figure CMD 4-3: Statistical Boxplot Comparison of NAQI</div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir While Showing Figure 3</div>
+      <div class="figure-speak-box">
+        <strong>Exact Sentence to Say to Sir:</strong>
+        "In Figure CMD 4-3, this boxplot displays the statistical median, interquartile range, and outliers of the composite National Air Quality Index (NAQI):<br/><br/>
+        Notice that the median line for Delhi is pinned right near the <strong>400 Severe threshold</strong>, with the upper whisker frequently hitting the maximum cap of 500.<br/><br/>
+        In contrast, Bengaluru and Hyderabad have narrow interquartile ranges, demonstrating consistent air quality with rare extreme pollution excursions."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- STEP 5: Terminal Benchmark Output Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🎬 Step 5: Distributed Spark MLlib 24-Hour Forecasting Pipeline</div>
       <div class="step-badge">Speaker: Teammate C (Spark MLlib ML Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./5_spark_mllib_forecasting.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ python3 scripts/train_forecasting_models.py
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./5_spark_mllib_forecasting.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ python3 scripts/train_forecasting_models.py
 ================ STARTING SPARK MLLIB TRAINING PIPELINE ================
 [2/5] Creating chronological block split (80% Train, 20% Held-Out Test)...
   Training observations (Past):     10,294 (80.0%)
@@ -551,50 +583,61 @@ Hyderabad    Satisfactory            1440        41.3
 
 Best Performing Model: Random Forest Regressor with RMSE = 35.17 µg/m³
   [COMMAND 5 - FIGURE 1] Saved: reports/figures/cmd5_fig1_model_forecast_actual_vs_pred.png</pre>
-        </div>
-        <div>
-          <div class="box-label-left">CMD 5 - Figure 1: 24h Forecast vs Ground Truth</div>
-          <img class="embedded-img" src="{img_cmd5_1}" alt="24h Forecast Plot"/>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          "Sir, now we move to distributed Machine Learning using Spark MLlib. Here, our goal is to forecast PM2.5 levels <strong>24 hours into the future</strong>.<br/><br/>
-          Notice how we engineered this:
-          <ol style="margin:4px 0; padding-left:18px;">
-            <li>In Step 2, we used a <strong>strict chronological 80/20 block split</strong>—the past 80% is used for training and future 20% for testing. We never use random shuffle because that causes data leakage in time series.</li>
-            <li>In Step 3, we evaluated a standard <strong>Persistence Baseline</strong>, which assumes tomorrow's air will be identical to today's reading. That gave an RMSE of 42.16.</li>
-            <li>Then Spark trained three models at scale. As you can see, our champion model is <strong>Random Forest</strong> with an <strong>RMSE of 35.17 &mu;g/m&sup3;—an improvement of +16.6% over baseline</strong> in just 1.79 seconds of distributed training.</li>
-            <li>It also generated <strong>Figure CMD 5-1</strong>, where you can see the orange predicted curve closely tracking the actual observed ground truth across the 24h horizon.</li>
-          </ol>
-          Next, let us demonstrate our hazard classification model in Step 6."
-        </div>
-        <div class="figure-speak">
-          <strong>Sentence to Say while Showing Figure CMD 5-1:</strong><br/>
-          <em>"Here the orange predicted line tracks the actual blue observed curve accurately across the 24-hour future test horizon."</em>
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        "Sir, now we move to distributed Machine Learning using Spark MLlib. Here, our goal is to forecast PM2.5 levels <strong>24 hours into the future</strong>.<br/><br/>
+        Notice how we engineered this:
+        <ol style="margin:2px 0; padding-left:16px;">
+          <li>In Step 2, we used a <strong>strict chronological 80/20 block split</strong>—the past 80% is used for training and future 20% for testing. We never use random shuffle because that causes data leakage in time series.</li>
+          <li>In Step 3, we evaluated a standard <strong>Persistence Baseline</strong>, which assumes tomorrow's air will be identical to today's reading. That gave an RMSE of 42.16.</li>
+          <li>Then Spark trained three models at scale. As you can see, our champion model is <strong>Random Forest</strong> with an <strong>RMSE of 35.17 &mu;g/m&sup3;—an improvement of +16.6% over baseline</strong> in just 1.79 seconds of distributed training.</li>
+        </ol>
+        Let us now look at the forecast curve comparison chart side-by-side below."
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 5: Figure 1 Side-by-Side Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🖼️ Step 5 - Figure 1: 24-Hour Ahead PM2.5 Forecast vs Observed Ground Truth</div>
+      <div class="step-badge">Visual Reference: cmd5_fig1_model_forecast_actual_vs_pred.png</div>
+    </div>
+    <div class="col-left-fig">
+      <img class="fig-preview" src="{img_cmd5_1}" alt="24h Forecast Curve"/>
+      <div class="fig-caption-tag">Figure CMD 5-1: Spark MLlib Random Forest 24h Predictions vs Observed Ground Truth</div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir While Showing Figure 5-1</div>
+      <div class="figure-speak-box">
+        <strong>Exact Sentence to Say to Sir:</strong>
+        "Sir, in this chart for Figure CMD 5-1, we are visualizing our model predictions against real sensor readings across the future test horizon:<br/><br/>
+        * The <strong>blue line</strong> represents the ground truth PM2.5 concentration observed by the sensor.<br/>
+        * The <strong>orange line</strong> represents our Spark MLlib Random Forest model forecasting 24 hours ahead.<br/><br/>
+        Notice how accurately the orange line tracks the rapid spikes and drops across multiple diurnal cycles. This validates that our multi-scale historical lag features (t-1 to t-24) allow Spark to capture temporal momentum effectively."
       </div>
     </div>
   </div>
 
   <div class="page-break"></div>
 
-  <!-- STEP 6 -->
-  <div class="step-container">
-    <div class="step-header">
-      <div class="step-title">🎬 Step 6: Spark MLlib 6-Tier Hazard Classification</div>
+  <!-- STEP 6: Terminal Classification Output Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🎬 Step 6: Spark MLlib 6-Tier Hazard Category Classification</div>
       <div class="step-badge">Speaker: Teammate C (Spark MLlib ML Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./6_spark_mllib_classification.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ python3 scripts/train_classification_model.py
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./6_spark_mllib_classification.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ python3 scripts/train_classification_model.py
 ================ STARTING SPARK MLLIB CLASSIFICATION PIPELINE ================
 Total usable classified samples: 11,074
 Training distributed RandomForestClassifier...
@@ -606,68 +649,79 @@ Training distributed RandomForestClassifier...
   Weighted Recall:    0.702
   Training Duration:  3.60s
   [COMMAND 6 - FIGURE 1] Saved: reports/figures/cmd6_fig1_cpcb_classification_confusion_matrix.png</pre>
-        </div>
-        <div>
-          <div class="box-label-left">CMD 6 - Figure 1: Classification Confusion Matrix</div>
-          <img class="embedded-img" src="{img_cmd6_1}" alt="Confusion Matrix"/>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
-        <div class="speech-card">
-          "Sir, this is our second ML model for classification. Instead of just numbers, it predicts the exact CPCB health category 24 hours ahead—Good, Satisfactory, Moderate, Poor, Very Poor, or Severe.<br/><br/>
-          Looking at the metrics on screen, the Random Forest Classifier achieved:
-          <ul>
-            <li><strong>70.21% Test Accuracy</strong></li>
-            <li><strong>0.676 Weighted F1-Score</strong></li>
-            <li>Distributed training took only <strong>3.60 seconds</strong>.</li>
-            <li>It generated <strong>Figure CMD 6-1</strong>, which confirms high diagonal concentration, proving that the model reliably identifies Severe and Satisfactory conditions without confusing them.</li>
-          </ul>
-          Driver, please show Step 7 for our master runner."
-        </div>
-        <div class="figure-speak">
-          <strong>Sentence to Say while Showing Confusion Matrix:</strong><br/>
-          <em>"The heatmap diagonal is dark, proving the classifier reliably identifies Severe days without confusing them with cleaner categories."</em>
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Natural Speaking Script)</div>
+      <div class="speech-card">
+        "Sir, this is our second ML model for classification. Instead of just numbers, it predicts the exact CPCB health category 24 hours ahead—Good, Satisfactory, Moderate, Poor, Very Poor, or Severe.<br/><br/>
+        Looking at the metrics on screen, the Random Forest Classifier achieved:
+        <ul>
+          <li><strong>70.21% Test Accuracy</strong> across the 6 hazard categories.</li>
+          <li><strong>0.676 Weighted F1-Score</strong> with balanced precision and recall.</li>
+          <li>Distributed training took only <strong>3.60 seconds</strong> on Spark.</li>
+        </ul>
+        Let us now inspect the confusion matrix side-by-side to verify how well it distinguishes critical hazard tiers."
       </div>
     </div>
   </div>
 
+  <!-- STEP 6: Confusion Matrix Side-by-Side Card -->
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🖼️ Step 6 - Figure 1: CPCB Health Hazard Confusion Matrix</div>
+      <div class="step-badge">Visual Reference: cmd6_fig1_cpcb_classification_confusion_matrix.png</div>
+    </div>
+    <div class="col-left-fig">
+      <img class="fig-preview" src="{img_cmd6_1}" alt="Confusion Matrix"/>
+      <div class="fig-caption-tag">Figure CMD 6-1: Multiclass Confusion Matrix across 6 CPCB Tiers</div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir While Showing Confusion Matrix</div>
+      <div class="figure-speak-box">
+        <strong>Exact Sentence to Say to Sir:</strong>
+        "Sir, looking at this confusion matrix heatmap in Figure CMD 6-1:<br/><br/>
+        Notice how strongly the values are concentrated along the main diagonal.<br/><br/>
+        Most importantly, look at the bottom-right corner for the <strong>Severe category</strong>: the model achieves high true-positive detection for hazardous air conditions with very few false negatives. This allows city administrators to issue health advisories and school closures 24 hours in advance with confidence."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
   <!-- STEP 7 -->
-  <div class="step-container">
-    <div class="step-header">
-      <div class="step-title">🎬 Step 7: Master Automated Pipeline & Closing (1 Minute)</div>
+  <div class="two-col-card">
+    <div class="card-header-full">
+      <div class="step-title">🎬 Step 7: Master Automated Pipeline Runner & Video Closing</div>
       <div class="step-badge">Speaker: Teammate A (Driver / Storage Lead)</div>
     </div>
-    <div class="two-columns">
-      <div class="col-left">
-        <div>
-          <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
-          <div class="cmd-prompt">./7_run_entire_pipeline.sh</div>
-        </div>
-        <div>
-          <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
-          <pre class="terminal-screen">$ ./run_pipeline.sh
+    <div class="col-left-term">
+      <div>
+        <div class="box-label-left">🕹️ Terminal Action (What Driver Runs)</div>
+        <div class="cmd-prompt">./7_run_entire_pipeline.sh</div>
+      </div>
+      <div>
+        <div class="box-label-left">🖥️ Screen Output (What Sir Sees)</div>
+        <pre class="terminal-screen">$ ./run_pipeline.sh
 ========================================================================
  Pipeline execution completed successfully!
  Reports available in: docs/
  Figures generated in: reports/figures/
  Partitioned Parquet: data/processed/hourly_aqi_parquet/
 ========================================================================</pre>
-        </div>
       </div>
-      <div class="col-right">
-        <div class="box-label-right">🗣️ What to Say to Sir (Closing Speech)</div>
-        <div class="speech-card">
-          "And Sir, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have <code>./7_run_entire_pipeline.sh</code>, which executes everything in one automated run.<br/><br/>
-          To summarize our project:
-          <ol style="margin:4px 0; padding-left:18px;">
-            <li>We built a full <strong>Track B</strong> distributed architecture on <strong>HDFS, Apache Spark, and Spark MLlib</strong>.</li>
-            <li>We enforced official government <strong>CPCB NAQI regulations</strong>, including the 16-hour completeness rule and unit conversions.</li>
-            <li>We proved machine learning at scale with a <strong>16.6% improvement in 24h forecasting</strong> and <strong>70.2% hazard classification accuracy</strong>.</li>
-          </ol>
-          Thank you, Sir!"
-        </div>
+    </div>
+    <div class="col-right-speech">
+      <div class="box-label-right">🗣️ What to Say to Sir (Closing Speech)</div>
+      <div class="speech-card">
+        "And Sir, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have <code>./7_run_entire_pipeline.sh</code>, which executes everything in one automated run.<br/><br/>
+        To summarize our project:
+        <ol style="margin:3px 0; padding-left:16px;">
+          <li>We built a full <strong>Track B</strong> distributed architecture on <strong>HDFS, Apache Spark, and Spark MLlib</strong>.</li>
+          <li>We enforced official government <strong>CPCB NAQI regulations</strong>, including the 16-hour completeness rule and unit conversions.</li>
+          <li>We proved machine learning at scale with a <strong>16.6% improvement in 24h forecasting</strong> and <strong>70.2% hazard classification accuracy</strong>.</li>
+        </ol>
+        Thank you, Sir!"
       </div>
     </div>
   </div>
