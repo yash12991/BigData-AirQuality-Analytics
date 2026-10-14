@@ -1,0 +1,19 @@
+# Secrets and Credentials
+apikey.md
+*.key
+.env
+*.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+
+# Data files & logs (large / local)
+data/
+logs/
+derby.log
+metastore_db/
+.venv/
+env/
+venv/
+*.parquet

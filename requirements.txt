@@ -1,0 +1,11 @@
+# Distributed Urban Air Quality Analytics and AQI Forecasting
+# Requirements specification
+
+pyspark>=4.0.0,<5.0.0
+pyarrow>=15.0.0
+pandas>=2.0.0,<3.0.0
+requests>=2.31.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+tabulate>=0.9.0
+numpy>=1.26.0,<3.0.0
