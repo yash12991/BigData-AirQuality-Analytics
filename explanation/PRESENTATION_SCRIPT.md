@@ -2,7 +2,7 @@
 ## Distributed Urban Air Quality Analytics & Forecasting (Track B)
 
 > **Context:** This script is specifically crafted for your **Google Meet video recording** to submit to your professor / Sir.  
-> **How to Record:** One teammate shares their screen with the terminal open in the `commands/` directory. The driver runs each command (`./1_hdfs_show_raw.sh`, etc.), and when the output appears, the designated teammate speaks naturally, explaining the exact numbers on screen.
+> **How to Record:** One teammate shares their screen with the terminal open in the `commands/` directory. The driver runs each command (`./1_hdfs_show_raw.sh`, etc.), and when the output appears, the designated teammate speaks naturally, explaining the exact numbers and figures displayed.
 
 ---
 
@@ -125,7 +125,7 @@ Spark ETL Pipeline completed successfully in 20.71 seconds.
 > 1. In Step 3, we converted gases like NO2 and SO2 from parts-per-billion ($\text{ppb}$) into $\mu\text{g/m}^3$ using their molecular weights.
 > 2. In Step 4, Spark pivoted all individual pollutant streams into station-hour records, giving **18,521 hourly records**.
 > 3. In Step 5, we applied the official Indian **CPCB 16-hour completeness rule**. A 24-hour moving window is only valid if there are at least 16 valid hourly readings. Exactly **12,792 records** met this strict rule.
-> 4. In the sample table on screen, you can see the 24-hour averages for PM2.5 and PM10, along with the final CPCB AQI—for example, R K Puram station in Delhi shows an AQI of 500, which falls into the **Severe** category.
+> 4. In the sample table on screen, you can see the calculated 24-hour averages for PM2.5 and PM10, along with the final CPCB AQI—for example, R K Puram station in Delhi shows an AQI of 500, which falls into the **Severe** category.
 > 
 > Now let us run Step 4 to see our distributed Spark SQL analytics and generated charts."
 
@@ -173,6 +173,17 @@ Hyderabad    Satisfactory            1440        41.3
 >   - **Figure CMD 4-3:** Shows the statistical AQI boxplots across the three cities.
 > 
 > Now, my teammate will explain our machine learning models in Step 5."
+
+### 🖼️ Figures Generated in Step 4:
+
+**Figure CMD 4-1: Diurnal Pattern of PM2.5 Concentration across Metros**
+![Figure CMD 4-1](../reports/figures/cmd4_fig1_diurnal_pm25_trends.png)
+
+**Figure CMD 4-2: Distribution of CPCB Health Hazard Categories by City**
+![Figure CMD 4-2](../reports/figures/cmd4_fig2_cpcb_category_distribution.png)
+
+**Figure CMD 4-3: CPCB Composite AQI Distribution across Cities (Boxplots)**
+![Figure CMD 4-3](../reports/figures/cmd4_fig3_city_aqi_boxplots.png)
 
 ---
 
@@ -232,6 +243,11 @@ Best Performing Model: Random Forest Regressor with RMSE = 35.17 µg/m³
 > 
 > Next, let us demonstrate our health hazard classification model in Step 6."
 
+### 🖼️ Figure Generated in Step 5:
+
+**Figure CMD 5-1: 24-Hour Ahead PM2.5 Forecast vs Observed Ground Truth**
+![Figure CMD 5-1](../reports/figures/cmd5_fig1_model_forecast_actual_vs_pred.png)
+
 ---
 
 ## 🎬 Step 6: Spark MLlib 6-Tier Hazard Classification
@@ -269,6 +285,11 @@ Training distributed RandomForestClassifier...
 > * It generated **Figure CMD 6-1 (`cmd6_fig1_cpcb_classification_confusion_matrix.png`)**, which confirms high diagonal accuracy, especially in correctly predicting Severe hazardous days.
 > 
 > Driver, please show Step 7 for our master runner."
+
+### 🖼️ Figure Generated in Step 6:
+
+**Figure CMD 6-1: CPCB Health Hazard Tier Classification Confusion Matrix**
+![Figure CMD 6-1](../reports/figures/cmd6_fig1_cpcb_classification_confusion_matrix.png)
 
 ---
 
