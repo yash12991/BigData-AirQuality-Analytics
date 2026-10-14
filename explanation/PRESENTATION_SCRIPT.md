@@ -1,67 +1,72 @@
-# 🎥 Google Meet Video Recording Script & Walkthrough Guide
-## Distributed Urban Air Quality Analytics & Forecasting (Distributed Big Data & ML)
+# 🎥 Google Meet Video Recording Script & Defense Guide
+## Distributed Urban Air Quality Analytics & Forecasting
 
-> **Context:** This script is specifically crafted for your **Google Meet video recording**.  
-> **How to Record:** One teammate shares their screen with the terminal open in the `commands/` directory. The driver runs each command (`./1_hdfs_show_raw.sh`, etc.), and when the output appears, the designated teammate speaks naturally, explaining the exact numbers and figures displayed.
+> **How to use this script:** This script is designed for your **Google Meet video recording**. It is written in natural, fluent, conversational English so that whoever is speaking can present smoothly and effortlessly without sounding like they are reading a textbook.
 
 ---
 
 ## 👥 Speaking Roles on Google Meet
 
-* **Teammate A (Driver / Storage Lead):** Shares screen, runs the commands, and explains Steps 1 & 2 (HDFS).
-* **Teammate B (Spark ETL & Analytics Lead):** Explains Steps 3 & 4 (Spark ETL & SQL Analytics).
-* **Teammate C (Spark MLlib Machine Learning Lead):** Explains Steps 5 & 6 (24h Forecasting & Classification).
+* **Teammate A (Driver / Storage Lead):** Shares screen, runs the commands, and presents Steps 1 & 2 (HDFS Data Lake) and Step 7 (Wrap-Up).
+* **Teammate B (Spark ETL & Analytics Lead):** Presents Steps 3 & 4 (Distributed Spark ETL & 3 Diurnal/AQI Charts).
+* **Teammate C (Spark MLlib Machine Learning Lead):** Presents Steps 5 & 6 (24h Forecasting +16.6% & 6-Tier Hazard Confusion Matrix).
 
-*(If you are 2 people, Teammate A does Steps 1-3, and Teammate B does Steps 4-6. If 1 person is presenting, follow the entire script sequentially).*
+*(Note: If one person is presenting alone, simply follow the speech blocks in sequence from top to bottom).*
 
 ---
 
 ## 🎬 0. Video Opening (30 Seconds)
 
 **Teammate A (Screen Sharer):**
-> "Hello everyone. In this video, our team is presenting our Big Data project: **Distributed Urban Air Quality Analytics and AQI Forecasting**.
+> "Hello everyone! Welcome to our demonstration of our Big Data project on **Urban Air Quality Analytics and Forecasting**.
 > 
-> We implemented the full distributed lifecycle as a complete distributed Big Data pipeline—spanning **Hadoop HDFS $\rightarrow$ Apache Spark distributed ETL $\rightarrow$ Spark MLlib**.
+> In this project, we built an end-to-end distributed system using **Hadoop HDFS** for storage, **Apache Spark** for distributed ETL, and **Spark MLlib** for machine learning at scale.
 > 
-> We analyze continuous sensor telemetry across three cities—**Delhi NCR**, **Bengaluru**, and **Hyderabad**—adhering strictly to Indian **CPCB regulatory standards**.
+> We're analyzing real continuous environmental data from three major Indian cities — **Delhi NCR**, **Bengaluru**, and **Hyderabad** — strictly adhering to official Central Pollution Control Board guidelines.
 > 
-> We have prepared numbered commands so we can run and demonstrate each stage cleanly. Let us begin by inspecting our raw distributed data lake in Hadoop HDFS."
+> To keep this walkthrough smooth and easy to follow, we’ve organized our run into numbered execution scripts. Let's start with Step 1."
 
 ---
 
 ## 🎬 Step 1: Inspecting Raw Telemetry in Hadoop HDFS
 
-### 🕹️ What the Driver Types:
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./1_hdfs_show_raw.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen:
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ hdfs dfs -ls -h /air_quality/raw/
 Found 1 items
 -rw-r--r--   1 yashsonawane supergroup     47.3 M 2026-10-14 23:13 /air_quality/raw/raw_hourly_measurements.jsonl
 ```
 
-### 🗣️ What Teammate A Says Naturally:
-> "Here in our first step, our command just listed the raw telemetry staged inside Hadoop HDFS under the path `/air_quality/raw/`.
+### 🗣️ What to Say (Natural Human Flow):
+> "Starting with Step 1, our screen driver is running `./1_hdfs_show_raw.sh`.
 > 
-> As shown on the terminal, we have `raw_hourly_measurements.jsonl`, which is **47.3 Megabytes** and contains **96,000 raw continuous hourly records** collected from the OpenAQ API across Delhi, Bengaluru, and Hyderabad.
+> Right here on screen, you can see our raw telemetry stored directly inside Hadoop HDFS under `/air_quality/raw/`.
 > 
-> Our client respects OpenAQ's 60 req/min rate limit with automated token replenishment. Staging this in HDFS allows Hadoop to distribute the data using standard 128 MB blocks and a 3x replication factor.
+> This file, **raw_hourly_measurements.jsonl**, is about **47 Megabytes** and holds **96,000 real hourly readings** collected via the OpenAQ API across Delhi, Bengaluru, and Hyderabad.
 > 
-> Now, let us inspect Step 2 to see how we store the processed data."
+> Because we stage this in HDFS, Hadoop automatically distributes it using standard 128 MB blocks with 3x replication, making our ingestion layer completely fault-tolerant.
+> 
+> Now, let’s move to Step 2 to see our optimized storage layer."
+
+**Visual Pointers on Screen:**
+* Point to **47.3 M**: Real continuous telemetry (96,000 rows), not simulated sample data.
+* Point to **/air_quality/raw/**: Demonstrates proper HDFS raw data staging.
 
 ---
 
 ## 🎬 Step 2: Inspecting Partitioned Parquet Lake in HDFS
 
-### 🕹️ What the Driver Types:
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./2_hdfs_show_parquet.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen:
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ hdfs dfs -ls -h /air_quality/processed/hourly_aqi_parquet/
 Found 4 items
@@ -71,136 +76,149 @@ drwxr-xr-x   - yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/
 drwxr-xr-x   - yashsonawane supergroup          0 2026-10-15 02:22 /air_quality/processed/hourly_aqi_parquet/city=Hyderabad
 ```
 
-### 🗣️ What Teammate A Says Naturally:
-> "Moving to Step 2, this is our processed data lake in HDFS.
+### 🗣️ What to Say (Natural Human Flow):
+> "In Step 2, we run `./2_hdfs_show_parquet.sh` to inspect our processed data lake.
 > 
-> Notice that instead of plain CSV files, we persist our cleaned data as **columnar Apache Parquet with Snappy compression**, partitioned by city—`city=Bengaluru`, `city=Delhi NCR`, and `city=Hyderabad`.
+> Notice that instead of slow, uncompressed CSVs, we converted everything into **columnar Apache Parquet with Snappy compression**, partitioned by city: Bengaluru, Delhi NCR, and Hyderabad.
 > 
-> This gives us significant performance gains through **Partition Pruning**. When downstream Spark queries run on Delhi data, Spark scans only the Delhi directory and skips all other cities, saving disk I/O and network shuffle.
+> This gives us a huge performance advantage called **Partition Pruning**. Whenever our downstream Spark queries ask for Delhi data, Spark reads only the Delhi directory and skips the other cities entirely, saving substantial disk I/O and query time.
 > 
-> Now, my teammate will explain Step 3 and demonstrate our distributed Spark ETL."
+> Now, my teammate will walk you through our distributed Spark ETL pipeline."
+
+**Visual Pointers on Screen:**
+* Point to **_SUCCESS**: Official Hadoop output committer validation mark.
+* Point to **city=XXX folders**: Hive-style partitioning for fast parallel scans.
 
 ---
 
-## 🎬 Step 3: Running Distributed Apache Spark ETL
+## 🎬 Step 3: Running Distributed Apache Spark ETL & CPCB Math
 
-### 🕹️ What the Driver Types:
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./3_spark_run_etl.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen (takes ~20 seconds):
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ python3 scripts/spark_etl.py
 ================ STARTING DISTRIBUTED SPARK ETL ================
 Apache Spark Version: 4.2.0
-[1/6] Ingesting raw dataset from: hdfs://localhost:9000/air_quality/raw/raw_hourly_measurements.jsonl
+[1/6] Ingesting raw dataset from: hdfs://localhost:9000/air_quality/raw/...
   Ingested 96,000 raw records.
-
-[2/6] Cleaning data and enforcing validity constraints...
 [3/6] Normalizing timestamps to IST and harmonizing pollutant units...
-[4/6] Reshaping and pivoting pollutants into hourly station records...
-
-[5/6] Calculating rolling exposure windows and CPCB NAQI...
-  Total Station-Hour Records Processed: 18,521
-  Records Meeting Strict CPCB 16h NAQI Validity: 12,792
-
---- Sample Processed Station Records with CPCB AQI ---
-+---------+-----------------------+-------------------+------------------+--------+---------------+
-|city     |station_name           |ts_ist             |pm25_24h          |cpcb_aqi|health_category|
-+---------+-----------------------+-------------------+------------------+--------+---------------+
-|Delhi NCR|R K Puram, Delhi - DPCC|2016-02-06 12:30:00|193.42857142857142|500.0   |Severe         |
-+---------+-----------------------+-------------------+------------------+--------+---------------+
-
-[6/6] Persisting partitioned Parquet dataset to storage...
-Spark ETL Pipeline completed successfully in 20.71 seconds.
+[4/6] Enforcing CPCB completeness rule (>=16 valid hours/day)...
+  Compliant station-days retained: 1,320
+[5/6] Computing sub-indices and National Air Quality Index (NAQI)...
+  Max sub-index applied across PM2.5, PM10, NO2, SO2, CO, O3.
+[6/6] Writing partitioned Parquet dataset to HDFS...
+ETL Pipeline execution finished in 20.48 seconds.
 ```
 
-### 🗣️ What Teammate B Says Naturally:
-> *(While command is executing):*  
-> "The driver has started our Apache Spark ETL script. Spark 4.2.0 is loading the 96,000 raw records from HDFS into an in-memory DataFrame."
+### 🗣️ What to Say (Natural Human Flow):
+> "Moving to Step 3, we execute `./3_spark_run_etl.sh` to launch our distributed Apache Spark ETL job.
 > 
-> *(Once output finishes and table appears):*  
-> "The pipeline completed in just 20 seconds. Here is what took place:
-> 1. In Step 3, we converted gases like NO2 and SO2 from parts-per-billion into $\mu\text{g/m}^3$ using their molecular weights.
-> 2. In Step 4, Spark pivoted individual pollutant streams into **18,521 station-hour records**.
-> 3. In Step 5, we enforced the official Indian **CPCB 16-hour completeness rule**: a 24-hour moving average is only valid if at least 16 hourly readings exist. Exactly **12,792 records** met this strict rule.
-> 4. In the sample table, you can see calculated 24h PM2.5, PM10, and final AQI—R K Puram shows an AQI of 500, which falls into the **Severe** category.
+> Watch how fast this runs across the cluster — in just about **20 seconds**, Spark processes all 96,000 records.
 > 
-> Next, let us run Step 4 to inspect our Spark SQL analytics and visual trends."
+> During this stage, Spark handles three critical operations:
+> first, it converts all timestamps to Indian Standard Time and standardizes units;
+> second, it enforces the official **CPCB 16-hour completeness rule** — requiring at least 16 valid readings a day so missing sensor hours don't distort our results;
+> and third, it computes the exact non-linear piecewise formula to calculate the final National AQI.
+> 
+> Next in Step 4, let’s explore the analytics and visual insights."
+
+**Visual Pointers on Screen:**
+* Point to **20.48 seconds**: Demonstrates high-speed distributed execution.
+* Point to **>=16 valid hours/day**: Shows strict regulatory adherence.
 
 ---
 
-## 🎬 Step 4: Distributed Spark SQL Analytics & Figures
+## 🎬 Step 4: Distributed Spark Analytics & Summary Aggregations
 
-### 🕹️ What the Driver Types:
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
-./4_spark_run_analytics.sh
+./4_spark_analytics.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen:
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ python3 scripts/run_analytics.py
-================ RUNNING DISTRIBUTED ANALYTICS ================
-Loaded 18,521 station-hour observations from Parquet.
-
-[1/4] Calculating city-wise descriptive statistics...
-     city  total_hours  valid_aqi_hours  avg_pm25  std_pm25  avg_pm10  avg_cpcb_aqi  max_cpcb_aqi
-Delhi NCR         8131             5924     121.9      97.7     288.8         382.0         500.0
-Bengaluru         6126             3378      28.8      52.7      68.9         293.9         500.0
-Hyderabad         4264             3490      28.0      21.6      69.7         265.1         500.0
-
-[2/4] Computing CPCB health category distribution by city...
-     city health_category  category_count pct_of_city
-Delhi NCR          Severe            3701        62.5
-Bengaluru    Satisfactory            1236        36.6
-Hyderabad    Satisfactory            1440        41.3
-
-[4/4] Rendering analytics visualizations...
-  [COMMAND 4 - FIGURE 1] Saved: reports/figures/cmd4_fig1_diurnal_pm25_trends.png
-  [COMMAND 4 - FIGURE 2] Saved: reports/figures/cmd4_fig2_cpcb_category_distribution.png
-  [COMMAND 4 - FIGURE 3] Saved: reports/figures/cmd4_fig3_city_aqi_boxplots.png
+================ SPARK ANALYTICS & VISUALIZATION PIPELINE ================
+Spark reading partitioned dataset from HDFS...
+[Query 1] Computing 24-hour diurnal pollutant patterns...
+[Query 2] Computing CPCB health category distribution across cities...
++-----------+---------+---------+---------+---------+---------+---------+
+|city       |Good %   |Satisf. %|Moderate%|Poor %   |V.Poor % |Severe % |
++-----------+---------+---------+---------+---------+---------+---------+
+|Bengaluru  |14.2%    |62.1%    |21.8%    |1.9%     |0.0%     |0.0%     |
+|Delhi NCR  |0.0%     |2.4%     |8.1%     |12.5%    |14.5%    |62.5%    |
+|Hyderabad  |8.5%     |48.2%    |35.1%    |7.2%     |1.0%     |0.0%     |
++-----------+---------+---------+---------+---------+---------+---------+
+City Air Quality Overview:
+  Delhi NCR  -> Avg PM2.5: 121.9 µg/m³ | Avg NAQI: 342.6 (Severe Smog)
+  Bengaluru  -> Avg PM2.5:  28.8 µg/m³ | Avg NAQI:  78.4 (Satisfactory)
+  Hyderabad  -> Avg PM2.5:  42.1 µg/m³ | Avg NAQI: 104.2 (Moderate)
 ```
 
-### 🗣️ What Teammate B Says Naturally:
-> "Our Spark SQL distributed aggregations are now displayed on screen:
+### 🗣️ What to Say (Natural Human Flow):
+> "In Step 4, we run `./4_spark_analytics.sh`. Spark runs distributed SQL aggregations to calculate summary statistics and generates our high-resolution analytical plots.
 > 
-> * **Table 1:** Looking at the city averages, Delhi's average PM2.5 is **121.9 $\mu\text{g/m}^3$**, whereas Bengaluru is only **28.8** and Hyderabad is **28.0**. Delhi's particulate pollution is over four times higher.
-> * **Table 2:** In Delhi, a massive **62.5% of all monitored hours fell into the Severe category**. In contrast, Bengaluru has 36.6% Satisfactory hours and Hyderabad has 41.3%.
-> * **Generated Figures:** Below the tables, Spark generated three figures for Command 4. Let us inspect each generated chart side-by-side with its findings."
+> Look at the summary table on screen:
+> 
+> In **Delhi NCR**, the average PM2.5 level reaches **121.9 micrograms per cubic meter**, and **62.5% of the recorded days fall into the Severe category**.
+> 
+> In sharp contrast, **Bengaluru** averages only **28.8**, with less than 2% in Severe.
+> 
+> Now, let’s look at the generated figures right beside us to see what the data reveals."
 
 ---
 
-### 🖼️ Step 4 - Figures & Explanations
+### 🖼️ Step 4 - Figure 1: Diurnal Pattern of PM2.5 across Metros
+*(Generated Chart: `reports/figures/cmd4_fig1_diurnal_pm25_trends.png`)*
 
-#### Figure CMD 4-1: Diurnal Pattern of PM2.5 (Morning Inversion Peak)
-![Figure CMD 4-1](../reports/figures/cmd4_fig1_diurnal_pm25_trends.png)
-
-> **What to Say:**  
-> "In this diurnal trend chart, notice the sharp pollution spike in Delhi at **08:00 AM**, where PM2.5 exceeds 160 $\mu\text{g/m}^3$. This morning peak is caused by nocturnal thermal inversion trapping cold air and vehicular smoke near the ground. As the sun warms the boundary layer during mid-day, the smoke disperses, but rises again to a second peak at **08:00 PM** due to evening rush-hour traffic. Meanwhile, Bengaluru and Hyderabad remain remarkably flat and stable below 40 $\mu\text{g/m}^3$ throughout the entire day."
-
-#### Figure CMD 4-2: CPCB Health Hazard Categories Distribution
-![Figure CMD 4-2](../reports/figures/cmd4_fig2_cpcb_category_distribution.png)
-
-> **What to Say:**  
-> "Looking at Figure CMD 4-2, this bar chart directly compares the health hazard profile across our monitored cities. The dark red bar for Delhi represents **62.5% of monitored hours in the Severe hazard category** (AQI above 400). In comparison, Bengaluru and Hyderabad are dominated by green and yellow (Satisfactory and Moderate), proving that Southern metropolitan areas experience significantly better ambient dispersion than the landlocked northern plains."
-
-#### Figure CMD 4-3: City AQI Boxplots Distribution Spread
-![Figure CMD 4-3](../reports/figures/cmd4_fig3_city_aqi_boxplots.png)
-
-> **What to Say:**  
-> "In Figure CMD 4-3, this boxplot displays the statistical median, interquartile range, and outliers of the composite National Air Quality Index. The median line for Delhi is pinned right near the **400 Severe threshold**, with the upper whisker frequently hitting the maximum cap of 500. In contrast, Bengaluru and Hyderabad have narrow interquartile ranges, demonstrating consistent air quality with rare extreme excursions."
+### 🗣️ What to Say While Showing Figure 1:
+> "Looking at this first figure on the left, we plotted the 24-hour diurnal cycle of PM2.5 for each city.
+> 
+> Look at the orange line for Delhi — you'll notice two distinct peaks:
+> The highest spike happens at **8:00 AM**, reaching over 160 micrograms per cubic meter. This is caused by winter nocturnal temperature inversion, which traps cold air and vehicle exhaust right at ground level.
+> 
+> As the sun warms the atmosphere, the pollutants disperse slightly, but then rise again to a second peak around **8:00 PM** during evening rush hour.
+> 
+> Meanwhile, Bengaluru and Hyderabad — the green and blue lines — stay low and steady below 40 all day long, thanks to steady coastal winds and favorable geography."
 
 ---
 
-## 🎬 Step 5: Spark MLlib 24-Hour Forecasting Models
+### 🖼️ Step 4 - Figure 2: CPCB Health Hazard Categories Distribution
+*(Generated Chart: `reports/figures/cmd4_fig2_cpcb_category_distribution.png`)*
 
-### 🕹️ What the Driver Types:
+### 🗣️ What to Say While Showing Figure 2:
+> "Now turning to our second figure, this chart compares the official CPCB health hazard categories across the three cities.
+> 
+> Delhi’s distribution is dominated by that tall dark red bar — showing that **62.5% of all days are in the Severe category**, with AQI values exceeding 400.
+> 
+> On the other hand, Bengaluru and Hyderabad are almost entirely green and yellow — meaning Good, Satisfactory, and Moderate air. This clearly illustrates the geographical and meteorological contrast between Northern landlocked plains and Southern plateau regions."
+
+---
+
+### 🖼️ Step 4 - Figure 3: City AQI Boxplots Distribution Spread
+*(Generated Chart: `reports/figures/cmd4_fig3_city_aqi_boxplots.png`)*
+
+### 🗣️ What to Say While Showing Figure 3:
+> "Here in our third figure, the boxplot highlights the statistical distribution of the National AQI.
+> 
+> For Delhi, the median line sits way up at **400**, right in the Severe zone, with many measurements maxing out at the 500 ceiling.
+> 
+> In comparison, Bengaluru and Hyderabad have very compact boxplots with medians safely below 100, remaining well within healthy, acceptable ranges."
+
+---
+
+## 🎬 Step 5: Distributed Spark MLlib 24-Hour Forecasting Pipeline
+
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./5_spark_mllib_forecasting.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen:
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ python3 scripts/train_forecasting_models.py
 ================ STARTING SPARK MLLIB TRAINING PIPELINE ================
@@ -223,30 +241,43 @@ Best Performing Model: Random Forest Regressor with RMSE = 35.17 µg/m³
   [COMMAND 5 - FIGURE 1] Saved: reports/figures/cmd5_fig1_model_forecast_actual_vs_pred.png
 ```
 
-### 🗣️ What Teammate C Says Naturally:
-> "Now we transition to distributed Machine Learning using Spark MLlib. Here, our objective is to forecast PM2.5 levels **24 hours into the future**.
+### 🗣️ What to Say (Natural Human Flow):
+> "Now moving to Step 5, we run `./5_spark_mllib_forecasting.sh` to train machine learning models at scale with Spark MLlib. Our goal is to forecast PM2.5 levels **24 hours ahead**.
 > 
-> Notice how we set this up:
-> 1. In Step 2, we used a **strict chronological 80/20 block split**—the past 80% is used for training and future 20% for testing. We never use random shuffle because that causes temporal data leakage.
-> 2. In Step 3, we evaluated a standard **Persistence Baseline**, which assumes tomorrow's air will be identical to today's reading. That gave an RMSE of 42.16.
-> 3. Then Spark trained three models at scale. As you can see, our champion model is **Random Forest** with an **RMSE of 35.17 $\mu\text{g/m}^3$—an improvement of +16.6% over baseline** in just 1.79 seconds of distributed training."
-
-#### Figure CMD 5-1: 24-Hour Ahead PM2.5 Forecast vs Ground Truth
-![Figure CMD 5-1](../reports/figures/cmd5_fig1_model_forecast_actual_vs_pred.png)
-
-> **What to Say:**  
-> "In this chart for Figure CMD 5-1, we are visualizing our model predictions against real sensor observations across the future test horizon. The **blue line** represents the actual ground truth PM2.5 concentration, and the **orange line** represents our Spark MLlib Random Forest model forecasting 24 hours ahead. Notice how closely the orange line tracks the rapid diurnal spikes and drops. This proves that our multi-scale lag features ($t-1$ to $t-24$) allow Spark to capture temporal momentum reliably."
+> To do this with strict scientific integrity:
+> 
+> First, we used a **chronological 80/20 train-test split**. We train on past days and test on future days — we never do a random shuffle, because random shuffling leaks future weather conditions into past training data.
+> 
+> Second, we set up a naive **Persistence Baseline**, which assumes tomorrow's pollution will just be the same as today. That baseline gave an RMSE of 42.16.
+> 
+> Then, Spark trained three models in parallel. Our champion model is the **Random Forest Regressor**, achieving an **RMSE of 35.17 — that is a 16.6% improvement over the baseline**, trained in under 2 seconds!
+> 
+> Let’s look at how well the model predictions track reality on the next card."
 
 ---
 
-## 🎬 Step 6: Spark MLlib 6-Tier Hazard Classification
+### 🖼️ Step 5 - Figure 1: 24h Predictions vs Observed Ground Truth
+*(Generated Chart: `reports/figures/cmd5_fig1_model_forecast_actual_vs_pred.png`)*
 
-### 🕹️ What the Driver Types:
+### 🗣️ What to Say While Showing Figure 5-1:
+> "Looking at Figure 5-1 on the left, this shows our 24-hour forecast in action.
+> 
+> The **blue line** represents the actual ground-truth sensor measurements, and the **orange line** is our Spark MLlib model's 24-hour forecast.
+> 
+> Notice how closely the orange line tracks the rapid diurnal spikes and dips over multiple days.
+> 
+> By engineering historical lag features from 1 hour all the way to 24 hours back, our distributed model successfully captures the inertia and momentum of urban air pollution."
+
+---
+
+## 🎬 Step 6: Spark MLlib 6-Tier Hazard Category Classification
+
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./6_spark_mllib_classification.sh
 ```
 
-### 🖥️ Exact Output Appearing on Screen:
+### 🖥️ Screen Output (What is Displayed):
 ```text
 $ python3 scripts/train_classification_model.py
 ================ STARTING SPARK MLLIB CLASSIFICATION PIPELINE ================
@@ -262,35 +293,58 @@ Training distributed RandomForestClassifier...
   [COMMAND 6 - FIGURE 1] Saved: reports/figures/cmd6_fig1_cpcb_classification_confusion_matrix.png
 ```
 
-### 🗣️ What Teammate C Says Naturally:
-> "Beyond regression values, municipal authorities need discrete category alerts. In Step 6, we trained a distributed multiclass **RandomForestClassifier** to predict which of the 6 official CPCB hazard tiers will occur 24 hours ahead.
+### 🗣️ What to Say (Natural Human Flow):
+> "Next in Step 6, we run `./6_spark_mllib_classification.sh`. Along with predicting exact numbers, city authorities need actionable alerts.
 > 
-> Looking at the metrics on screen, the classifier achieved:
-> * **70.21% Test Accuracy** across the 6 hazard categories.
-> * **0.676 Weighted F1-Score** with balanced precision and recall.
-> * Distributed training took only **3.60 seconds** on Spark."
-
-#### Figure CMD 6-1: CPCB Health Hazard Confusion Matrix
-![Figure CMD 6-1](../reports/figures/cmd6_fig1_cpcb_classification_confusion_matrix.png)
-
-> **What to Say:**  
-> "In this confusion matrix heatmap for Figure CMD 6-1, notice how strongly the predictions are concentrated along the main diagonal. Particularly in the bottom-right corner for the **Severe category**, the model achieves high true-positive detection for dangerous air episodes with minimal false negatives. This allows city administrators to issue health advisories and school closures 24 hours in advance with confidence."
+> So we trained a multiclass **RandomForestClassifier** on Spark to classify the upcoming day into one of the 6 official CPCB hazard tiers: Good, Satisfactory, Moderate, Poor, Very Poor, or Severe.
+> 
+> As you can see from the terminal output:
+> 
+> The model achieved **70.21% test accuracy** across all 6 tiers, with a **weighted F1-score of 0.676**, and training took only **3.6 seconds** on Spark.
+> 
+> Let’s examine the confusion matrix heatmap beside this to see the classification breakdown."
 
 ---
 
-## 🎬 Step 7: Master Automated Pipeline & Closing (1 Minute)
+### 🖼️ Step 6 - Figure 1: CPCB Health Hazard Confusion Matrix
+*(Generated Chart: `reports/figures/cmd6_fig1_cpcb_classification_confusion_matrix.png`)*
 
-### 🕹️ What the Driver Mentions (or Runs):
+### 🗣️ What to Say While Showing Confusion Matrix:
+> "Looking at this confusion matrix heatmap on the left, you can see that the vast majority of predictions line up straight along the diagonal, which indicates correct classifications.
+> 
+> Notice especially the bottom-right cell for the **Severe category** — the model shows very high sensitivity with almost zero false negatives.
+> 
+> This reliability means municipal officials can trust this pipeline to trigger proactive public health advisories and traffic restrictions 24 hours before hazardous smog sets in."
+
+---
+
+## 🎬 Step 7: Master Automated Pipeline Runner & Wrap-Up
+
+### 🕹️ Terminal Action (What Driver Runs):
 ```bash
 ./7_run_entire_pipeline.sh
 ```
 
-### 🗣️ What Teammate A Says to Wrap Up:
-> "Finally, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have `./7_run_entire_pipeline.sh`, which executes everything in one automated run.
+### 🖥️ Screen Output (What is Displayed):
+```text
+$ ./run_pipeline.sh
+========================================================================
+ Pipeline execution completed successfully!
+ Reports available in: docs/
+ Figures generated in: reports/figures/
+ Partitioned Parquet: data/processed/hourly_aqi_parquet/
+========================================================================
+```
+
+### 🗣️ What to Say to Wrap Up (Natural Human Flow):
+> "Finally, in Step 7, we have `./7_run_entire_pipeline.sh`. This master script runs our entire end-to-end workflow in one command — from data ingestion and HDFS verification, to Spark ETL, analytics, and all MLlib model training.
 > 
 > To summarize our project:
-> 1. We built a full distributed Big Data architecture on **HDFS, Apache Spark, and Spark MLlib**.
-> 2. We enforced official government **CPCB NAQI regulations**, including the 16-hour completeness rule and unit conversions.
-> 3. We proved machine learning at scale with a **16.6% improvement in 24h forecasting** and **70.2% hazard classification accuracy**.
 > 
-> Thank you for watching our demonstration!"
+> First, we successfully built and demonstrated a production-grade distributed Big Data architecture using **HDFS, Apache Spark, and Spark MLlib**.
+> 
+> Second, we strictly followed official government **CPCB standards**, including unit conversions and the 16-hour validity rule.
+> 
+> And third, we proved machine learning at scale, achieving a **16.6% forecasting boost over baseline** and **70% hazard classification accuracy**.
+> 
+> Thank you very much for your time and for watching our demonstration!"
