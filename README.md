@@ -2,7 +2,7 @@
 
 A production-grade distributed Big Data and Machine Learning system for urban air quality telemetry analysis and forecasting.
 
-Built strictly according to **Track B (Machine Learning at Scale: HDFS → Spark → Spark MLlib)** and adhering to the official **CPCB National Air Quality Index (NAQI)** regulatory framework.
+Built as a production-grade distributed **Machine Learning at Scale system (HDFS → Spark → Spark MLlib)** and adhering to the official **CPCB National Air Quality Index (NAQI)** regulatory framework.
 
 ---
 

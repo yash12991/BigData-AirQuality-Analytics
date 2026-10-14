@@ -8,7 +8,7 @@
 ## 📌 Table of Contents
 1. [Project Overview & Core Mission](#1-project-overview--core-mission)
 2. [Why This Project Was Built (Problem & Motivation)](#2-why-this-project-was-built-problem--motivation)
-3. [End-to-End System Architecture (Track B)](#3-end-to-end-system-architecture-track-b)
+3. [End-to-End Distributed System Architecture](#3-end-to-end-system-architecture-track-b)
 4. [Regulatory CPCB NAQI Mathematical Engine](#4-regulatory-cpcb-naqi-mathematical-engine)
 5. [Distributed Spark MLlib Machine Learning Pipeline](#5-distributed-spark-mllib-machine-learning-pipeline)
 6. [Key Benchmark Results](#6-key-benchmark-results)
@@ -22,7 +22,7 @@
 ## 1. Project Overview & Core Mission
 
 * **Project Title:** Distributed Urban Air Quality Analytics and AQI Forecasting
-* **Academic Track:** **Track B — Machine Learning at Scale ($\text{HDFS} \rightarrow \text{Spark} \rightarrow \text{Spark MLlib}$)**
+* **Academic Track:** **Machine Learning at Scale ($\text{HDFS} \rightarrow \text{Spark} \rightarrow \text{Spark MLlib}$)**
 * **Target Cities:** Delhi NCR, Bengaluru, Hyderabad (representing severe industrial/inversion climates vs. coastal/plateau tech hubs).
 * **Primary Technologies:** 
   * Apache Hadoop 3.3.6 (HDFS distributed storage)
@@ -54,7 +54,7 @@ Environmental telemetry presents severe Big Data challenges that make single-nod
 
 ---
 
-## 3. End-to-End System Architecture (Track B)
+## 3. End-to-End Distributed System Architecture
 
 ```
 ┌────────────────────────┐

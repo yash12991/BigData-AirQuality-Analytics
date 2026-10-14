@@ -1,5 +1,5 @@
 # 🎥 Google Meet Video Recording Script & Walkthrough Guide
-## Distributed Urban Air Quality Analytics & Forecasting (Track B)
+## Distributed Urban Air Quality Analytics & Forecasting (Distributed Big Data & ML)
 
 > **Context:** This script is specifically crafted for your **Google Meet video recording**.  
 > **How to Record:** One teammate shares their screen with the terminal open in the `commands/` directory. The driver runs each command (`./1_hdfs_show_raw.sh`, etc.), and when the output appears, the designated teammate speaks naturally, explaining the exact numbers and figures displayed.
@@ -21,7 +21,7 @@
 **Teammate A (Screen Sharer):**
 > "Hello everyone. In this video, our team is presenting our Big Data project: **Distributed Urban Air Quality Analytics and AQI Forecasting**.
 > 
-> We implemented the full distributed lifecycle under **Track B: Machine Learning at Scale**—spanning **Hadoop HDFS $\rightarrow$ Apache Spark distributed ETL $\rightarrow$ Spark MLlib**.
+> We implemented the full distributed lifecycle as a complete distributed Big Data pipeline—spanning **Hadoop HDFS $\rightarrow$ Apache Spark distributed ETL $\rightarrow$ Spark MLlib**.
 > 
 > We analyze continuous sensor telemetry across three cities—**Delhi NCR**, **Bengaluru**, and **Hyderabad**—adhering strictly to Indian **CPCB regulatory standards**.
 > 
@@ -289,7 +289,7 @@ Training distributed RandomForestClassifier...
 > "Finally, if we ever want to run the entire distributed pipeline end-to-end automatically—from data validation and Spark ETL to analytics and all MLlib models—we have `./7_run_entire_pipeline.sh`, which executes everything in one automated run.
 > 
 > To summarize our project:
-> 1. We built a full **Track B** distributed architecture on **HDFS, Apache Spark, and Spark MLlib**.
+> 1. We built a full distributed Big Data architecture on **HDFS, Apache Spark, and Spark MLlib**.
 > 2. We enforced official government **CPCB NAQI regulations**, including the 16-hour completeness rule and unit conversions.
 > 3. We proved machine learning at scale with a **16.6% improvement in 24h forecasting** and **70.2% hazard classification accuracy**.
 > 

@@ -307,7 +307,7 @@ def write_evaluation_report(results, best_model: str):
     md.append(f"## 2. Key Findings & Discussion\n")
     md.append(f"1. **Defensible Superiority Over Baseline:** `{best_model}` surpassed the standard persistence baseline with statistically significant error reduction across the held-out future test horizon.")
     md.append("2. **No Data Leakage:** Because the train/test partitioning utilized a strict chronological timestamp threshold, future weather or seasonal patterns did not contaminate the training feature weights.")
-    md.append("3. **Distributed Scalability:** Spark MLlib executed tree ensemble training and parallel evaluation natively over Spark DataFrames in seconds, validating Track B's distributed machine learning requirement.\n")
+    md.append("3. **Distributed Scalability:** Spark MLlib executed tree ensemble training and parallel evaluation natively over Spark DataFrames in seconds, validating distributed machine learning at scale.\n")
 
     with open(rep_path, "w", encoding="utf-8") as f:
         f.write("\n".join(md))
