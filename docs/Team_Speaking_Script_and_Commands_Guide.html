@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Video Call Speaking Script & Live Commands Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
+    @page {
+      size: A4;
+      margin: 14mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.55;
+      font-size: 9.8pt;
+    }
+
+    .header-banner {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .badge-track {
+      display: inline-block;
+      background: #0284c7;
+      color: white;
+      font-size: 7.5pt;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19pt;
+      color: #0f172a;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 10pt;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-top: 10px;
+      font-size: 8.5pt;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13pt;
+      color: #0f172a;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .person-card {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      page-break-inside: avoid;
+    }
+
+    .person-header {
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 11pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .person-1-hdr { background: #0284c7; }
+    .person-2-hdr { background: #7c3aed; }
+    .person-3-hdr { background: #059669; }
+
+    .person-body {
+      padding: 12px 14px;
+      background: #ffffff;
+    }
+
+    .speech-box {
+      background: #f1f5f9;
+      border-left: 4px solid #0284c7;
+      padding: 10px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 9.5pt;
+      color: #0f172a;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .person-2-hdr ~ .person-body .speech-box { border-left-color: #7c3aed; }
+    .person-3-hdr ~ .person-body .speech-box { border-left-color: #059669; }
+
+    .speech-box strong {
+      font-style: normal;
+      color: #0284c7;
+    }
+
+    .person-2-hdr ~ .person-body .speech-box strong { color: #7c3aed; }
+    .person-3-hdr ~ .person-body .speech-box strong { color: #059669; }
+
+    .command-box {
+      background: #0f172a;
+      color: #38bdf8;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5pt;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .command-label {
+      font-size: 7.5pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .command-code {
+      color: #ffffff;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .expected-output {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 8.5pt;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+
+    .expected-output strong {
+      color: #0f172a;
+    }
+
+    .handoff-box {
+      background: #fdf4ff;
+      border: 1px dashed #d946ef;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 9pt;
+      color: #86198f;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    table.cheatsheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    table.cheatsheet-table th, table.cheatsheet-table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    table.cheatsheet-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    .qa-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      page-break-inside: avoid;
+    }
+
+    .qa-q {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 9pt;
+      margin-bottom: 3px;
+    }
+
+    .qa-a {
+      font-size: 8.8pt;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER BANNER -->
+  <div class="header-banner">
+    <div class="badge-track">Track B: Machine Learning at Scale • HDFS ➔ Spark ➔ Spark MLlib</div>
+    <h1>Team Video Call Speaking Script & Live Commands Guide</h1>
+    <div class="subtitle">Distributed Urban Air Quality Analytics & CPCB AQI Forecasting Platform</div>
+
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Audience:</strong> Evaluators / Viva Committee</div>
+      <div class="meta-item"><strong>Team Division:</strong> 3 Equal Roles (HDFS, Spark, MLlib)</div>
+      <div class="meta-item"><strong>Total Time:</strong> 8 – 10 Minutes + Q&A</div>
+    </div>
+  </div>
+
+  <!-- PERSON 1 -->
+  <div class="person-card">
+    <div class="person-header person-1-hdr">
+      <span>🟢 PERSON 1: Data Ingestion & Hadoop HDFS Lead</span>
+      <span>⏱ 0:00 – 3:00 (3 Minutes)</span>
+    </div>
+    <div class="person-body">
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #0284c7;">STEP 1: SAY THIS FIRST (Natural Opening):</div>
+      <div class="speech-box">
+        "Hi everyone, our project is <strong>Distributed Air Quality Analytics and AQI Forecasting</strong>. We implemented <strong>Track B</strong> using Hadoop HDFS, Apache Spark, and Spark MLlib.<br><br>
+        Continuous air quality monitoring stations produce heavy, continuous streams of pollution telemetry. A single machine using Pandas will hit out-of-memory errors when processing years of sensor data with sliding averages. So, we built a distributed architecture starting with Hadoop HDFS."
+      </div>
+
+      <div class="command-label">💻 STEP 2: RUN THIS COMMAND IN TERMINAL (Show Raw Data in HDFS):</div>
+      <div class="command-box">
+        <div class="command-code">/Users/yashsonawane/bigdata/hadoop/current/bin/hdfs dfs -ls -h /air_quality/raw/</div>
+      </div>
+      <div class="expected-output">
+        <strong>Expected Output on Screen:</strong> <code>-rw-r--r-- 3 yashsonawane 47.3 M /air_quality/raw/raw_hourly_measurements.jsonl</code>
+      </div>
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #0284c7;">SAY THIS WHILE THE OUTPUT SHOWS ON SCREEN:</div>
+      <div class="speech-box">
+        "First, we pulled data from OpenAQ API v3 for three major Indian metros: Delhi, Bengaluru, and Hyderabad. We collected <strong>96,000 raw hourly sensor readings</strong> covering six criteria pollutants—PM2.5, PM10, NO2, SO2, CO, and Ozone.<br><br>
+        As you can see live in HDFS on my screen, this raw dataset is <strong>47.3 MB</strong>. We stored it in HDFS with a <strong>128 MB block size</strong> and a <strong>3x replication factor</strong>, making it completely fault-tolerant and safe across the cluster."
+      </div>
+
+      <div class="command-label">💻 STEP 3: RUN THIS COMMAND (Show Partitioned Parquet Lake):</div>
+      <div class="command-box">
+        <div class="command-code">/Users/yashsonawane/bigdata/hadoop/current/bin/hdfs dfs -ls -h /air_quality/processed/hourly_aqi_parquet/</div>
+      </div>
+      <div class="expected-output">
+        <strong>Expected Output on Screen:</strong> Folders: <code>city=Bengaluru</code>, <code>city=Delhi NCR</code>, <code>city=Hyderabad</code>
+      </div>
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #0284c7;">SAY THIS TO EXPLAIN PARTITIONS:</div>
+      <div class="speech-box">
+        "Here in <code>/air_quality/processed/</code>, you can see our cleaned dataset stored in <strong>Apache Parquet</strong>. It is partitioned by city: Delhi, Bengaluru, and Hyderabad. Partitioning allows Spark workers to read only the folders they need instead of scanning all 47 MB every time, making our queries significantly faster."
+      </div>
+
+      <div class="handoff-box">
+        🤝 <strong>HAND-OFF LINE:</strong> "Now, I will pass it to <strong>[Person 2's Name]</strong>, who will explain how we cleaned the data and calculated the official Indian AQI using Apache Spark."
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE BREAK FOR CLEAN PRINTING -->
+  <div class="page-break"></div>
+
+  <!-- PERSON 2 -->
+  <div class="person-card">
+    <div class="person-header person-2-hdr">
+      <span>🔵 PERSON 2: Spark ETL & India CPCB Regulatory Lead</span>
+      <span>⏱ 3:00 – 6:00 (3 Minutes)</span>
+    </div>
+    <div class="person-body">
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #7c3aed;">STEP 1: SAY THIS FIRST (Explain Spark ETL & CPCB Standards):</div>
+      <div class="speech-box">
+        "Thank you, [Person 1]. Once the data sat in HDFS, I used <strong>Apache Spark 4.2.0</strong> to clean it and calculate the official Indian Air Quality Index.<br><br>
+        A major flaw in naive implementations is simply averaging raw pollutant concentrations. That is scientifically invalid: 60 of PM2.5 is moderate pollution, but 60 of SO2 is completely safe.<br><br>
+        We strictly implemented India's official <strong>Central Pollution Control Board (CPCB)</strong> methodology:<br>
+        1. We harmonized all gases from ppb to mass concentrations (µg/m³).<br>
+        2. We calculated 24-hour moving averages for particulates and 8-hour averages for CO and Ozone.<br>
+        3. We enforced the strict <strong>16-hour rule</strong>: a day is only valid if there are at least 16 hours of real sensor readings. We never replace missing numbers with zero.<br>
+        4. We calculated sub-indices using CPCB linear breakpoints, and the highest sub-index becomes the final composite AQI."
+      </div>
+
+      <div class="command-label">💻 STEP 2: RUN THIS COMMAND IN TERMINAL (Run Spark SQL Analytics Job):</div>
+      <div class="command-box">
+        <div class="command-code">export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.20.1/libexec/openjdk.jdk/Contents/Home"<br>.venv/bin/python3 scripts/run_analytics.py</div>
+      </div>
+      <div class="expected-output">
+        <strong>Expected Output on Screen:</strong> Printed table with City Stats (Delhi PM2.5: 121.9, Bengaluru: 28.8) and Diurnal peak charts generated.
+      </div>
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #7c3aed;">SAY THIS WHILE THE TABLES PRINT ON SCREEN:</div>
+      <div class="speech-box">
+        "I'm now running our Spark SQL analytics job across the cluster. Out of 18,521 total hours, <strong>12,792 hours met the strict CPCB validity rule</strong> in just 25 seconds.<br><br>
+        Look at the table printed on screen:<br>
+        • <strong>Delhi NCR</strong> recorded a mean PM2.5 of <strong>121.9 µg/m³</strong>, and <strong>62.5% of all valid hours fell in the 'Severe' category</strong>.<br>
+        • <strong>Bengaluru and Hyderabad</strong> had much cleaner air, averaging around <strong>28 µg/m³</strong>.<br>
+        • Furthermore, our diurnal chart proved that pollution follows a bimodal cycle: peaking sharply in the morning rush hour around <strong>8:00 AM</strong>, and peaking again late at night around <strong>10:00 PM</strong> when cold air traps vehicular emissions near the ground."
+      </div>
+
+      <div class="handoff-box">
+        🤝 <strong>HAND-OFF LINE:</strong> "Now, I will pass it to <strong>[Person 3's Name]</strong>, who will show our distributed forecasting models in Spark MLlib."
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PERSON 3 -->
+  <div class="person-card">
+    <div class="person-header person-3-hdr">
+      <span>🟣 PERSON 3: Spark MLlib Machine Learning & Forecasting Lead</span>
+      <span>⏱ 6:00 – 9:00 (3 Minutes)</span>
+    </div>
+    <div class="person-body">
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #059669;">STEP 1: SAY THIS FIRST (Explain ML Strategy & No Data Leakage):</div>
+      <div class="speech-box">
+        "Thank you, [Person 2]. I engineered the distributed machine learning pipeline using <strong>Spark MLlib</strong> to forecast pollution 24 hours in advance.<br><br>
+        To ensure our machine learning evaluation was genuinely sound and realistic, we did two critical things:<br>
+        1. <strong>Zero Data Leakage:</strong> We did NOT use random K-Fold splits, because in time series, random splits cheat by leaking future weather into the past. We used a strict <strong>chronological 80/20 block split</strong>—training on the first 10,294 historical hours and testing on the final 2,570 future hours.<br>
+        2. <strong>Honest Benchmarking:</strong> We benchmarked against a <strong>Naive Persistence Baseline</strong>, which simply assumes tomorrow's pollution equals today's (yielding an RMSE of 42.16 µg/m³)."
+      </div>
+
+      <div class="command-label">💻 STEP 2: RUN THIS COMMAND IN TERMINAL (Train Spark MLlib Models):</div>
+      <div class="command-box">
+        <div class="command-code">export JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.20.1/libexec/openjdk.jdk/Contents/Home"<br>.venv/bin/python3 scripts/train_forecasting_models.py</div>
+      </div>
+      <div class="expected-output">
+        <strong>Expected Output on Screen:</strong> Model Benchmark: Baseline (42.16) ➔ Linear Regression (37.86) ➔ Random Forest (35.17, +16.6% improvement).
+      </div>
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #059669;">SAY THIS WHILE THE MODELS TRAIN & PRINT:</div>
+      <div class="speech-box">
+        "I just ran our distributed training pipeline. Spark's <code>VectorAssembler</code> combined past temporal lags from 1 hour ago up to 24 hours ago, along with temperature and humidity.<br><br>
+        Look at the benchmark results on screen:<br>
+        • Baseline RMSE was <strong>42.16 µg/m³</strong>.<br>
+        • Spark MLlib Linear Regression brought error down to <strong>37.86 µg/m³</strong>.<br>
+        • Our best model—<strong>Spark MLlib Random Forest</strong>—achieved an <strong>RMSE of 35.17 µg/m³</strong>! That is a <strong>16.6% improvement over baseline</strong> with an R² of 0.306, training in just <strong>1.49 seconds</strong> across executor cores!<br><br>
+        We also trained a Random Forest Classifier to forecast the 6 CPCB health hazard categories (Good, Moderate, Severe, etc.), achieving <strong>70.21% test accuracy</strong>."
+      </div>
+
+      <div style="font-weight: 700; font-size: 9pt; margin-bottom: 4px; color: #059669;">SAY THIS TO CONCLUDE:</div>
+      <div class="speech-box">
+        "In summary, we built a complete big data system: raw data into <strong>HDFS</strong>, distributed cleaning and CPCB calculation in <strong>Apache Spark</strong>, and fast 24-hour forecasting with <strong>Spark MLlib</strong>. All code, figures, and our 1.3 MB report are on our GitHub. We're now happy to answer your questions. Thank you!"
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAGE BREAK FOR CHEATSHEET & VIVA DEFENSE -->
+  <div class="page-break"></div>
+
+  <div class="section-title">📋 Quick Reference Cheatsheet for Team Members</div>
+  <table class="cheatsheet-table">
+    <thead>
+      <tr>
+        <th style="width: 15%;">Person</th>
+        <th style="width: 25%;">What You Show</th>
+        <th style="width: 35%;">Exact Command to Type</th>
+        <th style="width: 25%;">Key Numbers to Recite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Person 1</strong><br>(HDFS Lead)</td>
+        <td>Raw JSON Telemetry in HDFS</td>
+        <td><code>hdfs dfs -ls -h /air_quality/raw/</code></td>
+        <td><strong>96,000 readings</strong>, 47.3 MB, 128 MB blocks, 3x replication factor</td>
+      </tr>
+      <tr>
+        <td><strong>Person 1</strong><br>(HDFS Lead)</td>
+        <td>Partitioned Parquet Data Lake</td>
+        <td><code>hdfs dfs -ls -h /air_quality/processed/hourly_aqi_parquet/</code></td>
+        <td>Partitioned by <code>city</code>, 92% compression ratio, Snappy format</td>
+      </tr>
+      <tr>
+        <td><strong>Person 2</strong><br>(Spark ETL Lead)</td>
+        <td>Distributed Spark SQL Analytics</td>
+        <td><code>.venv/bin/python3 scripts/run_analytics.py</code></td>
+        <td><strong>12,792 valid CPCB records</strong>, 16h rule, Delhi 62.5% Severe</td>
+      </tr>
+      <tr>
+        <td><strong>Person 3</strong><br>(MLlib Lead)</td>
+        <td>Spark MLlib Model Training</td>
+        <td><code>.venv/bin/python3 scripts/train_forecasting_models.py</code></td>
+        <td>Baseline 42.16 ➔ <strong>Random Forest 35.17 (+16.6%)</strong>, 1.49s train time, 70.2% accuracy</td>
+      </tr>
+      <tr>
+        <td><strong>Any Member</strong></td>
+        <td>Full End-to-End Master Pipeline</td>
+        <td><code>./run_pipeline.sh</code></td>
+        <td>Executes all 5 stages in sequence with exit code 0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title" style="margin-top: 24px;">🛡️ Top 5 Viva Defense Questions & Answers (Who Answers What)</div>
+
+  <div class="qa-box">
+    <div class="qa-q">Q1: "Why use Hadoop HDFS and Apache Spark instead of Pandas and Scikit-Learn?" (Answered by Person 1)</div>
+    <div class="qa-a"><strong>Answer:</strong> "Pandas loads the entire dataset into a single computer's RAM, which crashes with out-of-memory errors as sensor telemetry grows to millions of rows. HDFS distributes data blocks across DataNodes, and Spark executes transformations and ML tree splits in parallel across executor cores in just 1.5 seconds."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-q">Q2: "Can't we just calculate AQI by taking the average of all pollutant concentrations?" (Answered by Person 2)</div>
+    <div class="qa-a"><strong>Answer:</strong> "No, that is scientifically invalid. Different pollutants have completely different toxicities—for instance, 60 µg/m³ of PM2.5 is Moderate pollution, while 60 µg/m³ of SO2 is completely clean. CPCB requires piecewise linear sub-indices for each pollutant, with the final AQI determined by the maximum operator: AQI = max(I_1, I_2, ... I_n)."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-q">Q3: "Did you use K-Fold Cross-Validation for your machine learning models?" (Answered by Person 3)</div>
+    <div class="qa-a"><strong>Answer:</strong> "No, because in time-series forecasting, random shuffling leaks future weather into past training sets. We implemented a strict chronological 80/20 block split: the first 80% historical timestamps for training, and the final 20% strictly future horizon for testing. This guarantees zero data leakage."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-q">Q4: "Why did you benchmark against a Naive Persistence Baseline?" (Answered by Person 3)</div>
+    <div class="qa-a"><strong>Answer:</strong> "Air pollution has strong autocorrelation: tomorrow's pollution often resembles today's. Reporting an R² or RMSE without a baseline is misleading. Our Random Forest model beat the persistence baseline by 16.6%, proving that our lag feature engineering learned real atmospheric dynamics."</div>
+  </div>
+
+  <div class="qa-box">
+    <div class="qa-q">Q5: "How did you handle missing values in sensor streams?" (Answered by Person 2)</div>
+    <div class="qa-a"><strong>Answer:</strong> "We never imputed missing values with zero, because zero implies clean mountain air and would falsely drag averages down. Instead, we enforced CPCB's statutory 16-hour completeness rule: if a 24-hour window had fewer than 16 valid readings, the AQI was marked invalid."</div>
+  </div>
+
+</body>
+</html>
