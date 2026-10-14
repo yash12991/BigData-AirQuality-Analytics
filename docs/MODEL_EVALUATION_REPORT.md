@@ -12,8 +12,8 @@
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Naive Persistence Baseline** | 42.16 | 15.56 | 0.003 | +0.0% | 0.00s |
 | **Linear Regression (ElasticNet)** | 37.86 | 17.92 | 0.196 | +10.2% | 1.70s |
-| **Random Forest Regressor** | 35.17 | 14.47 | 0.306 | +16.6% | 1.95s |
-| **Gradient-Boosted Trees (GBT)** | 37.61 | 16.07 | 0.206 | +10.8% | 6.82s |
+| **Random Forest Regressor** | 35.17 | 14.47 | 0.306 | +16.6% | 2.19s |
+| **Gradient-Boosted Trees (GBT)** | 37.61 | 16.07 | 0.206 | +10.8% | 5.84s |
 
 ---
 
