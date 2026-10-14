@@ -128,10 +128,11 @@ def generate_analytics():
     plt.ylabel("PM2.5 (µg/m³)", fontsize=11)
     plt.xticks(range(0, 24, 2))
     plt.tight_layout()
-    plot1_path = FIGURES_DIR / "diurnal_pm25_trends.png"
+    plot1_path = FIGURES_DIR / "cmd4_fig1_diurnal_pm25_trends.png"
     plt.savefig(plot1_path, dpi=200)
+    plt.savefig(FIGURES_DIR / "diurnal_pm25_trends.png", dpi=200)
     plt.close()
-    print(f"  Saved figure: {plot1_path}")
+    print(f"  [COMMAND 4 - FIGURE 1] Saved: {plot1_path}")
 
     # Plot 2: CPCB Health Category Stacked / Grouped Bar
     plt.figure(figsize=(10, 5))
@@ -157,10 +158,11 @@ def generate_analytics():
     plt.ylabel("Percentage of Monitored Hours (%)", fontsize=11)
     plt.legend(title="CPCB Category", bbox_to_anchor=(1.02, 1), loc="upper left")
     plt.tight_layout()
-    plot2_path = FIGURES_DIR / "cpcb_category_distribution.png"
+    plot2_path = FIGURES_DIR / "cmd4_fig2_cpcb_category_distribution.png"
     plt.savefig(plot2_path, dpi=200)
+    plt.savefig(FIGURES_DIR / "cpcb_category_distribution.png", dpi=200)
     plt.close()
-    print(f"  Saved figure: {plot2_path}")
+    print(f"  [COMMAND 4 - FIGURE 2] Saved: {plot2_path}")
 
     # Plot 3: City AQI Boxplots
     plt.figure(figsize=(8, 5))
@@ -169,7 +171,9 @@ def generate_analytics():
         data=pdf_sample,
         x="city",
         y="cpcb_aqi",
+        hue="city",
         palette="Set2",
+        legend=False,
     )
     plt.axhline(50, color="#2ecc71", linestyle="--", alpha=0.7, label="Good (50)")
     plt.axhline(100, color="#f1c40f", linestyle="--", alpha=0.7, label="Satisfactory (100)")
@@ -180,10 +184,11 @@ def generate_analytics():
     plt.ylabel("National Air Quality Index (NAQI)", fontsize=11)
     plt.legend(loc="upper right", framealpha=0.9)
     plt.tight_layout()
-    plot3_path = FIGURES_DIR / "city_aqi_boxplots.png"
+    plot3_path = FIGURES_DIR / "cmd4_fig3_city_aqi_boxplots.png"
     plt.savefig(plot3_path, dpi=200)
+    plt.savefig(FIGURES_DIR / "city_aqi_boxplots.png", dpi=200)
     plt.close()
-    print(f"  Saved figure: {plot3_path}")
+    print(f"  [COMMAND 4 - FIGURE 3] Saved: {plot3_path}")
 
     # Write Markdown Analytics Report
     report_file = DOCS_DIR / "ANALYTICS_REPORT.md"

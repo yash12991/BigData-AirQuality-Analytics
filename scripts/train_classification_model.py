@@ -178,10 +178,11 @@ def run_classification():
     plt.yticks(rotation=0)
     plt.tight_layout()
 
-    cm_path = FIGURES_DIR / "cpcb_classification_confusion_matrix.png"
+    cm_path = FIGURES_DIR / "cmd6_fig1_cpcb_classification_confusion_matrix.png"
     plt.savefig(cm_path, dpi=200)
+    plt.savefig(FIGURES_DIR / "cpcb_classification_confusion_matrix.png", dpi=200)
     plt.close()
-    print(f"  Saved confusion matrix plot: {cm_path}")
+    print(f"  [COMMAND 6 - FIGURE 1] Saved confusion matrix plot: {cm_path}")
 
     # Write report
     write_classification_report(accuracy, f1_score, precision, recall, train_duration, cm_matrix, labels)

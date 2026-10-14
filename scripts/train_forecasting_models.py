@@ -278,10 +278,11 @@ def plot_actual_vs_pred(pred_df, model_name: str):
     plt.legend(frameon=True, facecolor="white", edgecolor="none")
     plt.tight_layout()
 
-    out_fig = FIGURES_DIR / "model_forecast_actual_vs_pred.png"
+    out_fig = FIGURES_DIR / "cmd5_fig1_model_forecast_actual_vs_pred.png"
     plt.savefig(out_fig, dpi=200)
+    plt.savefig(FIGURES_DIR / "model_forecast_actual_vs_pred.png", dpi=200)
     plt.close()
-    print(f"  Saved forecast comparison plot: {out_fig}")
+    print(f"  [COMMAND 5 - FIGURE 1] Saved forecast plot: {out_fig}")
 
 
 def write_evaluation_report(results, best_model: str):
