@@ -331,8 +331,8 @@ All models use a **strict chronological block split** — training data is bound
 | Member | Role | Contributions |
 |:-------|:-----|:--------------|
 | **Yash Sonawane (2023BCS0143)** | HDFS Lead & Pipeline Architect | Hadoop HDFS setup, HDFS data zone design, raw data staging, `run_pipeline.sh`, project architecture, data ingestion via OpenAQ API (`ingest_openaq.py`), data preprocessing & cleaning (schema validation, deduplication, timestamp normalization), unit harmonization (ppb → µg/m³), HDFS zone creation and data lineage management |
-| **Rounak Ukey (2023BCS0152)** | Spark ETL & Analytics Lead | `spark_etl.py`, `cpcb_aqi.py`, `run_analytics.py`, distributed Spark ETL pipeline design, CPCB NAQI regulatory engine implementation (breakpoints, validity rules, maximum-operator composite AQI), multi-pollutant pivot transformation, Spark SQL city-wise analytics queries, diurnal PM₂.₅ trend analysis, health category distribution reports, generation of publication-ready figures |
-| **Aditya Gupta (2023BCS0125)** | Spark MLlib Lead | `train_forecasting_models.py`, `train_classification_model.py`, temporal lag feature engineering (t-1 to t-24), chronological train/test split design, distributed Random Forest / GBT / Linear Regression benchmarking, persistence baseline comparison, 6-tier CPCB hazard classification model, weighted F1-score and confusion matrix evaluation, model evaluation reports |
+| **Rounak Ukey (2023BCS0152)** | Spark ETL & Analytics Lead | `spark_etl.py`, `cpcb_aqi.py`, `run_analytics.py`, CPCB NAQI regulatory engine (breakpoints, validity rules, composite AQI), multi-pollutant pivot transformation, Spark SQL city-wise analytics, diurnal trend analysis, publication-ready figure generation |
+| **Aditya Gupta (2023BCS0125)** | Spark MLlib Lead | `train_forecasting_models.py`, `train_classification_model.py`, temporal lag feature engineering (t-1 to t-24), chronological train/test split, Random Forest / GBT / Linear Regression benchmarking, 6-tier CPCB hazard classification, model evaluation and reports |
 
 
 ---
