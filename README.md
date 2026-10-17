@@ -330,7 +330,7 @@ All models use a **strict chronological block split** — training data is bound
 
 | Member | Role | Contributions |
 |:-------|:-----|:--------------|
-| **Yash Sonawane (2023BCS0143)** | HDFS Lead & Pipeline Architect | Hadoop HDFS setup, HDFS data zone design, raw data staging, `run_pipeline.sh`, project architecture |
+| **Yash Sonawane (2023BCS0143)** | HDFS Lead & Pipeline Architect | Hadoop HDFS setup, HDFS data zone design, raw data staging, `run_pipeline.sh`, project architecture, data ingestion via OpenAQ API (`ingest_openaq.py`), data preprocessing & cleaning (schema validation, deduplication, timestamp normalization), unit harmonization (ppb → µg/m³), HDFS zone creation and data lineage management |
 | **Rounak Ukey (2023BCS0152)** | Spark ETL & Analytics Lead | `spark_etl.py`, `cpcb_aqi.py`, `run_analytics.py`, CPCB regulatory implementation, Spark SQL queries, diurnal analysis figures |
 | **Aditya Gupta (2023BCS0125)** | Spark MLlib Lead | `train_forecasting_models.py`, `train_classification_model.py`, feature engineering, model benchmarking, evaluation reports |
 
